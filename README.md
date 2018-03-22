@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Overview
 
 Every Chef installation needs a Chef Repository. This is the place where cookbooks, roles, config files and other artifacts for managing systems with Chef will live. We strongly recommend storing this repository in a version control system such as Git and treat it like source code.
@@ -22,3 +23,7 @@ The config file, `.chef/knife.rb` is a repository specific configuration file fo
 # Next Steps
 
 Read the README file in each of the subdirectories for more information about what goes in those directories.
+=======
+# chef-repo
+Repositório do Chef para estudo.
+>>>>>>> 938f8caa58596e754d9f31e1415a94bac9ec99b5
