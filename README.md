@@ -1,3 +1,5 @@
+# CHEF
+
 Chef is a configuration management tool designed to bring automation to your entire infrastructure.
 
 If you just want to use Chef, check out these resources:
