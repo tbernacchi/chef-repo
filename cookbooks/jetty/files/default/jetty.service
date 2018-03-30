@@ -1,0 +1,14 @@
+[Unit]
+Description=jetty service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/jetty/bin/jetty.sh start
+ExecStop=/opt/jetty/bin/jetty.sh stop
+ExecRestart=/opt/jetty/bin/jetty.sh restart
+User=jetty
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
