@@ -3,8 +3,6 @@
 # Recipe:: installing_nexus
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
-# not_if { File.exist?("/opt/nexus-3.7.1-02-unix.tar.gz || /opt/nexus || /opt/sonatype-work") } 
-#testar uma condicao para repor os arquivos se forem apagados
 remote_file '/opt/nexus-3.7.1-02-unix.tar.gz' do 
  source 'http://download.sonatype.com/nexus/3/nexus-3.7.1-02-unix.tar.gz'
  owner 'root'
@@ -55,4 +53,3 @@ bash 'Moving Nexus.tar.gz' do
  EOF
  not_if { File.exist? ("/root/nexus-3.7.1-02-unix.tar.gz") }
 end
-

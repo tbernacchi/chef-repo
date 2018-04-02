@@ -39,11 +39,11 @@ template '/opt/jetty/start.ini' do
 end
 
 bash 'Removing webapps files' do
-cwd '/opt/jetty/webapps'
-code <<-EOF
-rm -rf *
-EOF
-not_if { File.exist? ("/opt/jetty/webapps/java-artifact-chef-test.war") }
+ cwd '/opt/jetty/webapps'
+ code <<-EOF
+ rm -rf *
+ EOF
+ not_if { File.exist? ("/opt/jetty/webapps/java-artifact-chef-test.war") }
 end
 
 bash 'Moving jetty-distribution-9.4.9.v20180320.tar.gz' do
@@ -59,4 +59,3 @@ end
 #chown -R jetty:jetty /var/run/jetty 
 #EOF
 #end
-
