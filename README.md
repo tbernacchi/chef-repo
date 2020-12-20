@@ -1,11 +1,30 @@
-# CHEF
+<h1 align="">Chef repo 👋</h1>
+<p>
+</p>
 
-Chef is a configuration management tool designed to bring automation to your entire infrastructure.
+> Chef repo with a lot of cookbooks
 
-If you just want to use Chef, check out these resources:
+![Chef](/.github/assets/img/chef-logo_orig.png)
 
-- [learnchef](https://learn.chef.io): Getting started guide
-- [docs.chef.io](https://docs.chef.io): Comprehensive User Docs
-- [Installer Downloads](https://downloads.chef.io/chef/): Install Chef as a complete package
-- [chef/chef](https://hub.docker.com/r/chef/chef): Docker image for use with [kitchen-dokken](https://github.com/someara/kitchen-dokken)
+## Table of Contents
 
+* **Chef**  
+  * [Official Website](https://www.chef.io/)
+  * [Official Docs](https://docs.chef.io/)
+  * [Official Github](https://github.com/chef/chef)
+
+## Author
+
+👤 **Tadeu Bernacchi**
+
+* Website: http://www.tadeubernacchi.com.br/
+* Twitter: [@tadeuuuuu](https://twitter.com/tadeuuuuu)
+* Github: [@tbernacchi](https://github.com/tbernacchi)
+* LinkedIn: [@tadeubernacchi](https://linkedin.com/in/tadeubernacchi)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
