@@ -1,0 +1,12 @@
+# Programacao para sync do cron
+00 01 * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/repo/sync_repo.sh > /dev/null 2>&1
+
+# Programacao para a populacao do repositorio de pacotes de desenvolvimento para o repo de prod
+*/2 * * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/repo/create-repo-dev-2-prod.sh > /dev/null 2>&1
+
+# Programacao para a populacao do repositorio de pacotes de desenvolvimento para o repo de DEVQA
+*/2 * * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/repo/create-repo-dev-2-devqa.sh > /dev/null 2>&1
+
+# Programacao para manter somente as ultimas 05 versoes de rpm internos no repositorio de prod
+00 06 * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/repo/purge-old-rpms.sh  > /dev/null 2>&1
+

@@ -1,0 +1,33 @@
+ {
+      "argstring": null,
+      "date-ended": {
+        "date": "2018-12-28T19:03:06Z",
+        "unixtime": 1546023786142
+      },
+      "date-started": {
+        "date": "2018-12-28T19:00:00Z",
+        "unixtime": 1546023600237
+      },
+      "description": "/app/java/jdk/bin/java -jar -Dhttp.proxyHost=proxy.prd1.tabajara.local -Dhttp.proxyPort=3130 -Dhttp.nonProxyHosts='localhost|127.0.0.1|.intranet|.local' -Dhttps.proxyHost=proxy.prd1.tabajara.local -Dhttps.proxyPort=3130 -Dhttps.nonProxyHosts='localhost|127.0.0.1|.intranet|.local' /app/standalone/compraaprovada-batch/app.jar --spring.profiles.active=prd  ('UpdateLote') [... 2 steps]",
+      "executionType": "scheduled",
+      "href": "http://rundeck.tabajara.local:4440/api/21/execution/294471",
+      "id": 294471,
+      "job": {
+        "averageDuration": 174532,
+        "description": "Job responsável por verificar e informar à PAX os pedidos de Pronta Entrega aprovados",
+        "group": "Credenciamento",
+        "href": "http://rundeck.tabajara.local:4440/api/21/job/b4c1ed61-0bdc-4443-8067-341f78176df7",
+        "id": "b4c1ed61-0bdc-4443-8067-341f78176df7",
+        "name": "Credenciamento-Compra-Aprovada-UpdateLote",
+        "permalink": "http://rundeck.tabajara.local:4440/project/tabajaraBatch/job/show/b4c1ed61-0bdc-4443-8067-341f78176df7",
+        "project": "tabajaraBatch"
+      },
+      "permalink": "http://rundeck.tabajara.local:4440/project/tabajaraBatch/execution/show/294471",
+      "project": "tabajaraBatch",
+      "status": "succeeded",
+      "successfulNodes": [
+        "localhost",
+        "zureta01"
+      ],
+      "user": "luiz.junior-adm"
+    },

@@ -1,0 +1,1 @@
+svc_jenkins	ALL=(ALL)	NOPASSWD:ALL

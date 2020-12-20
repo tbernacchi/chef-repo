@@ -1,0 +1,33 @@
+# project.properties
+#
+# $Id: project.properties.template 2126 2010-08-17 21:06:08Z ahonor $
+#
+
+#
+# The base directory for this project's instances
+#
+project.dir = <%= node['rundeck'][node.chef_environment]['project.dir'] %>/${project.name}
+#
+# The base directory of project specific configuration files
+#
+project.etc.dir = <%= node['rundeck'][node.chef_environment]['project.dir'] %>/${project.name}/etc
+
+#
+# The default resources file
+#
+resources.source.1.type=file
+resources.source.1.config.file=<%= node['rundeck'][node.chef_environment]['project.dir'] %>/${project.name}/etc/resources.xml
+resources.source.1.config.format=resourcexml
+resources.source.1.config.includeServerNode=true
+resources.source.1.config.generateFileAutomatically=true
+#
+# The project description
+#
+project.description = 
+#
+# The organization 
+#
+project.organization = 
+
+# Slack Url Webhook
+project.plugin.Notification.SlackNotification.webhook_url=https://hooks.slack.com/services/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

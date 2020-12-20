@@ -1,0 +1,97 @@
+$PreserveFQDN on
+$ModLoad imfile
+
+<% if node['fqdn'] == 'firula01.tabajara.intranet' -%>
+# Webportal
+$InputFileName <%= node['siloc']['webportal'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-web-portal
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+# Webportal - NGINX
+$InputFileName /var/log/nginx/siloc-web-portal-access.log
+$InputFileTag siloc-web-portal-nginx
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+<% end -%>
+<% if node['fqdn'] == 'firula02.tabajara.intranet' -%>
+# Webportal
+$InputFileName <%= node['siloc']['webportal'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-web-portal
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+# Webportal - NGINX
+$InputFileName /var/log/nginx/siloc-web-portal-access.log
+$InputFileTag siloc-web-portal-nginx
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+<% end -%>
+<% if node['fqdn'] == 'quadrado01.tabajara.intranet' -%>
+$InputFileName <%= node['siloc']['en_cip'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-entrada-cip
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+$InputFileName <%= node['siloc']['en_tabajara'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-entrada-tabajara
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+$InputFileName /opt/silocarquivos/logs/transfer_files.log
+$InputFileTag siloc-transfer_files
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+<% end -%>
+<% if node['fqdn'] == 'quadrado02.tabajara.intranet' -%>
+$InputFileName <%= node['siloc']['sa_cip'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-saida-cip
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+$InputFileName <%= node['siloc']['sa_tabajara'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-saida-tabajara
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+<% end -%>
+<% if node['fqdn'] == 'quadrado03.tabajara.intranet' -%>
+$InputFileName <%= node['siloc']['proc_xml'][node.chef_environment]['log_path'] %>
+$InputFileTag siloc-processos-dirf
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+<% end -%>
+
+# yum.log
+$InputFileName /var/log/yum.log
+$InputFileTag siloc-yum
+$InputFileStateFile stat-file3
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+<% if node.chef_environment == 'qa' -%>
+if $syslogtag contains 'siloc' then @zig01.qa.tabajara.intranet:3514
+<% end -%>
+<% if node.chef_environment == 'prod' -%>
+if $syslogtag contains 'siloc' then @zarcao01.tabajara.intranet:3514
+<% end -%>

@@ -1,0 +1,20 @@
+tabajaraBatch - shell_new_batch_street_ConfirmacaoStreet Takes too long - Time : 70686
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 25082
+tabajaraBatch - transf_TIF Takes too long - Time : 2838
+tabajaraBatch - Relatorio_Boleto_BB Takes too long - Time : 2206
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 11555
+tabajaraBatch - transf_TIF Takes too long - Time : 2884
+tabajaraBatch - Relatorio_Boleto_BB Takes too long - Time : 2086
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 11063
+tabajaraBatch - Relatorio_Boleto_BB Takes too long - Time : 3480
+tabajaraBatch - transf_TIF Takes too long - Time : 2864
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 25574
+tabajaraBatch - Solicitação Terminal Batch Takes too long - Time : 23258
+tabajaraBatch - transf_TIF Takes too long - Time : 6857
+tabajaraBatch - envioPedidoPax Takes too long - Time : 5046
+tabajaraBatch - Relatorio_Boleto_BB Takes too long - Time : 2165
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 11597
+tabajaraBatch - transf_TIF Takes too long - Time : 5952
+tabajaraBatch - Relatorio_Boleto_BB Takes too long - Time : 2130
+tabajaraBatch - Credenciamento-Compra-Aprovada-UpdateLote Job Failed - Time : 12037
+tabajaraBatch - transf_TIF Takes too long - Time : 3842

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <node name="user-oracle@vbnwlb002.prd1.tabajara.local"
+        description="Weblogic Batch - VBNWLB002"
+        tags="Stack_Oracle"
+        hostname="vbnwlb002.prd1.tabajara.local"
+        osName="Linux"
+        username="oracle"
+        ssh-password-storage-path="keys/nodes/user-oracle-vbnwlb002.prd1.tabajara.local"
+        ssh-authentication="password"/>
+</project>

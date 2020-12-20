@@ -1,0 +1,14 @@
+#
+# Cookbook:: stl-app-sftp-tabajara
+# Recipe:: sftp-tabajara
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+
+# ssh include for new users
+%w{ ingenico financeiro ingenico bbrasil }.each do |sftpuser|
+  execute "${sftpuser}" do
+    command "echo 'Match User #{sftpuser}' >>  /tmp/teste.log"
+    command "echo '   ChrootDirectory /SFTP/%u' >>  /tmp/teste.log"
+    not_if "grep -F #{sftpuser} /tmp/teste.log"
+  end
+end

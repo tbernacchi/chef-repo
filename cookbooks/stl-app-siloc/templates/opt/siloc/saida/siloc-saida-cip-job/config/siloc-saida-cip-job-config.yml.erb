@@ -1,0 +1,51 @@
+logging:
+  level.: INFO
+  file: <%= node['siloc']['sa_cip'][node.chef_environment]['log_path'] %>
+
+server:
+  port: <%= node['siloc']['sa_cip'][node.chef_environment]['app_port'] %>
+
+management:
+  security:
+    enabled: false
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active: <%= node['siloc']['database'][node.chef_environment]['max_ative'] %>
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+
+siloc:
+  saida:
+    enviocip:
+      cip:
+        task:
+          enable: true
+          crontab: 0 0/1 * 1/1 * ?
+        diretorio:
+          entrada: <%= node['siloc']['sa_cip'][node.chef_environment]['ent_dir'] %>
+          saida: <%= node['siloc']['sa_cip'][node.chef_environment]['saida_dir'] %>
+          log: <%= node['siloc']['sa_cip'][node.chef_environment]['log_dir'] %>

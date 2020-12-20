@@ -1,0 +1,14 @@
+management.endpoints.web.exposure.include = *
+management.endpoint.shutdown.enabled=<%= node['apimonitor']['api'][node.chef_environment]['management.endpoint.shutdown.enabled'] %>
+spring.autoconfigure.exclude=<%= node['apimonitor']['api'][node.chef_environment]['spring.autoconfigure.exclude'] %>
+spring.main.banner-mode=<%= node['apimonitor']['api'][node.chef_environment]['spring.main.banner-mode'] %>
+logging.file=<%= node['apimonitor']['api'][node.chef_environment]['logging.file'] %>
+spring.servlet.multipart.enabled=<%= node['apimonitor']['api'][node.chef_environment]['spring.servlet.multipart.enabled'] %>
+spring.servlet.multipart.file-size-threshold=<%= node['apimonitor']['api'][node.chef_environment]['spring.servlet.multipart.file-size-threshold'] %>
+spring.servlet.multipart.max-file-size=<%= node['apimonitor']['api'][node.chef_environment]['spring.servlet.multipart.max-file-size'] %>
+spring.servlet.multipart.max-request-size=<%= node['apimonitor']['api'][node.chef_environment]['spring.servlet.multipart.max-request-size'] %>
+file.upload-dir=<%= node['apimonitor']['api'][node.chef_environment]['file.upload-dir'] %>
+debug=<%= node['apimonitor']['api'][node.chef_environment]['debug'] %>
+server.port=<%= node['apimonitor']['api'][node.chef_environment]['server.port'] %>
+oauth-provider.url=<%= node['apimonitor']['api'][node.chef_environment]['oauth-provider.url'] %>
+spring.data.mongodb.uri=mongodb://<%= node['apimonitor']['api'][node.chef_environment]['user.db'] %>:<%= node['apimonitor']['api'][node.chef_environment]['passwd'] %>@<%= node['apimonitor']['api'][node.chef_environment]['mongo01'] %>:27017,<%= node['apimonitor']['api'][node.chef_environment]['mongo02'] %>:27018,<%= node['apimonitor']['api'][node.chef_environment]['mongo03'] %>,27019/<%= node['apimonitor']['api'][node.chef_environment]['uri'] %>

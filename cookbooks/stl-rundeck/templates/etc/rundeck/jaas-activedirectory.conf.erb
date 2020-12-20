@@ -1,0 +1,21 @@
+activedirectory {
+com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
+debug="true"
+contextFactory="com.sun.jndi.ldap.LdapCtxFactory"
+providerUrl="<%= node['rundeck'][node.chef_environment]['providerUrl'] %>"
+bindDn="<%= node['rundeck'][node.chef_environment]['bindDn'] %>"
+bindPassword="<%= node['rundeck'][node.chef_environment]['bindPassword'] %>"
+authenticationMethod="<%= node['rundeck'][node.chef_environment]['authenticationMethod'] %>"
+forceBindingLogin="<%= node['rundeck'][node.chef_environment]['forceBindingLogin'] %>"
+userBaseDn="<%= node['rundeck'][node.chef_environment]['userBaseDn'] %>"
+userRdnAttribute="<%= node['rundeck'][node.chef_environment]['userRdnAttribute'] %>"
+userIdAttribute="<%= node['rundeck'][node.chef_environment]['userIdAttribute'] %>"
+userPasswordAttribute="<%= node['rundeck'][node.chef_environment]['userPasswordAttribute'] %>"
+userObjectClass="<%= node['rundeck'][node.chef_environment]['userObjectClass'] %>"
+roleBaseDn="<%= node['rundeck'][node.chef_environment]['roleBaseDn'] %>"
+roleNameAttribute="<%= node['rundeck'][node.chef_environment]['roleNameAttribute'] %>"
+roleMemberAttribute="<%= node['rundeck'][node.chef_environment]['roleMemberAttribute'] %>"
+roleObjectClass="<%= node['rundeck'][node.chef_environment]['roleObjectClass'] %>"
+cacheDurationMillis="<%= node['rundeck'][node.chef_environment]['cacheDurationMillis'] %>"
+reportStatistics="true";
+};

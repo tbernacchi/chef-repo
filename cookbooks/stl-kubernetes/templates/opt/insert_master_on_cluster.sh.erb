@@ -1,0 +1,16 @@
+#!/bin/bash
+RES=$(curl -s http://localhost:10248/healthz)
+HOSTNAME=$(hostname -s)
+if [[ $RES != 'ok' ]] || [[ $RES == '' ]]; then
+  systemctl stop kubelet
+  systemctl daemon-reload
+  systemctl start kubelet
+  sleep 5
+  TOKEN=$(grep 'token ' <%= node['k8s'][node.chef_environment]['nfs_mount'] %>/create_cluster_output.txt -m 1 | awk -F'token' '{print $2}'  | awk '{print  $1}')
+  HASH=$(grep 'discovery-token-ca-cert-hash' <%= node['k8s'][node.chef_environment]['nfs_mount'] %>/create_cluster_output.txt | tail -1 | awk '{print $NF}')
+  cp -rf <%= node['k8s'][node.chef_environment]['nfs_mount'] %>/*.{key,crt,pub} /etc/kubernetes/pki/
+  kubeadm join <%= node['k8s'][node.chef_environment]['vip'] %>:6443 --token $TOKEN --discovery-token-ca-cert-hash $HASH --experimental-control-plane >> <%= node['k8s'][node.chef_environment]['nfs_mount'] %>/insert_worker_${HOSTNAME}.log
+  mkdir -p /root/.kube
+  sudo cp -i /etc/kubernetes/admin.conf /root/.kube/config
+  sudo chown root:root /root/.kube/config
+fi

@@ -1,0 +1,3 @@
+##### 
+# Programacao para adicionar script: 
+00 06 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/rotinas-sms-email/zipa-log.sh > /dev/null 2>&1

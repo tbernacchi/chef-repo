@@ -1,0 +1,119 @@
+# CDTO JDBC
+spring.datasource.cdto.hikari.auto-commit=false
+spring.datasource.cdto.hikari.connection-timeout=30000
+spring.datasource.cdto.hikari.validation-timeout=5000
+spring.datasource.cdto.hikari.idle-timeout=300000
+spring.datasource.cdto.hikari.maximum-pool-size=10
+spring.datasource.cdto.hikari.minimum-idle=2
+spring.datasource.cdto.hikari.pool-name=HikariCP-CDTO
+spring.datasource.cdto.hikari.connection-init-sql=SELECT 1 FROM DUAL
+spring.datasource.cdto.hikari.max-lifetime=1800000
+spring.datasource.cdto.hikari.initialization-fail-timeout=1
+spring.datasource.cdto.hikari.leak-detection-threshold=10000
+spring.datasource.cdto.data-source-class-name=oracle.jdbc.pool.OracleDataSource
+spring.datasource.cdto.server-name=<%= node['portaladm']['qa']['datasource']['cdto']['server-name'] %>
+spring.datasource.cdto.port-number=1521
+spring.datasource.cdto.database-name=<%= node['portaladm']['qa']['datasource']['cdto']['db_name'] %>
+spring.datasource.cdto.driver-class-name=oracle.jdbc.driver.OracleDriver
+spring.datasource.cdto.url=<%= node['portaladm']['qa']['datasource']['cdto']['url'] %>
+spring.datasource.cdto.username=<%= node['portaladm']['qa']['datasource']['cdto']['username'] %>
+spring.datasource.cdto.password=<%= node['portaladm']['qa']['datasource']['cdto']['password'] %>
+spring.datasource.cdto.type=com.zaxxer.hikari.HikariDataSource
+# Oracle
+spring.datasource.cdto.hikari.implicit-caching-enabled=true
+spring.datasource.cdto.hikari.max-statements=250
+# MySql
+spring.datasource.cdto.hikari.cache-prep-stmts=true
+spring.datasource.cdto.hikari.prep-stmt-cache-size=256
+spring.datasource.cdto.hikari.prep-stmt-cache-sql-limit=2048
+spring.datasource.cdto.hikari.use-server-prep-stmts=true
+spring.datasource.cdto.hikari.rewriteBatchedStatements=true
+# CDTO JPA
+spring.datasource.cdto.hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+spring.datasource.cdto.hibernate.show_sql=false
+spring.datasource.cdto.hibernate.format_sql=true
+spring.datasource.cdto.hibernate.generate_statistics=true
+spring.datasource.cdto.hibernate.use_sql_comments=true
+spring.datasource.cdto.hibernate.session.events.log=true
+# TRNG JDBC
+spring.datasource.trng.hikari.auto-commit=false
+spring.datasource.trng.hikari.connection-timeout=30000
+spring.datasource.trng.hikari.validation-timeout=5000
+spring.datasource.trng.hikari.idle-timeout=300000
+spring.datasource.trng.hikari.maximum-pool-size=10
+spring.datasource.trng.hikari.minimum-idle=2
+spring.datasource.trng.hikari.pool-name=HikariCP-TRNG
+spring.datasource.trng.hikari.connection-init-sql=SELECT 1 FROM DUAL
+spring.datasource.trng.hikari.max-lifetime=1800000
+spring.datasource.trng.hikari.initialization-fail-timeout=1
+spring.datasource.trng.hikari.leak-detection-threshold=10000
+spring.datasource.trng.data-source-class-name=oracle.jdbc.pool.OracleDataSource
+spring.datasource.trng.server-name=<%= node['portaladm']['qa']['datasource']['trng']['server-name'] %>
+spring.datasource.trng.port-number=1521
+spring.datasource.trng.database-name=<%= node['portaladm']['qa']['datasource']['trng']['db_name'] %>
+spring.datasource.trng.driver-class-name=oracle.jdbc.driver.OracleDriver
+spring.datasource.trng.url=<%= node['portaladm']['qa']['datasource']['trng']['url'] %>
+spring.datasource.trng.username=<%= node['portaladm']['qa']['datasource']['trng']['username'] %>
+spring.datasource.trng.password=<%= node['portaladm']['qa']['datasource']['trng']['password'] %>
+spring.datasource.trng.type=com.zaxxer.hikari.HikariDataSource
+# Oracle
+spring.datasource.trng.hikari.implicit-caching-enabled=true
+spring.datasource.trng.hikari.max-statements=250
+# MySql
+spring.datasource.trng.hikari.cache-prep-stmts=true
+spring.datasource.trng.hikari.prep-stmt-cache-size=256
+spring.datasource.trng.hikari.prep-stmt-cache-sql-limit=2048
+spring.datasource.trng.hikari.use-server-prep-stmts=true
+spring.datasource.trng.hikari.rewriteBatchedStatements=true
+# TRNG JPA
+spring.datasource.trng.hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+spring.datasource.trng.hibernate.show_sql=false
+spring.datasource.trng.hibernate.format_sql=true
+spring.datasource.trng.hibernate.generate_statistics=true
+spring.datasource.trng.hibernate.use_sql_comments=true
+spring.datasource.trng.hibernate.session.events.log=true
+#LOG
+logging.config=classpath:log4j2-prd.xml
+#BOOT
+server.port=<%= node['portaladm']['qa']['orders']['port'] %>
+server.contextPath=<%= node['portaladm']['qa']['orders']['contextPath'] %>
+#OAUTH
+oauth-provider.url=<%= node['portaladm']['qa']['oauth']['url'] %>
+http.authorize-requests.ant-matchers.authenticated=/orders/street/**
+# MANDRILL
+tabajara.admin.trng.prechargeback.email.mandril.target-url=<%= node['portaladm']['qa']['mandril']['pre_chgBack_url'] %>
+tabajara.admin.trng.prechargeback.email.mandril.http-proxy.username=
+tabajara.admin.trng.prechargeback.email.mandril.http-proxy.password=
+tabajara.admin.trng.prechargeback.email.mandril.http-proxy.url=<%= node['portaladm']['qa']['proxy_host'] %>
+tabajara.admin.trng.prechargeback.email.mandril.http-proxy.port=<%= node['portaladm']['qa']['proxy_port'] %>
+tabajara.admin.captcha.keyId=<%= node['portaladm']['qa']['captcha_keyID']%>
+tabajara.admin.captcha.userId=<%= node['portaladm']['qa']['captcha_userID'] %>
+#/health endpoint configuration (Comment when you are using customized health check)
+endpoints.health.id=health
+endpoints.health.sensitive=false
+endpoints.health.enabled=true
+management.endpoint.health.show-details=always
+management.security.enabled=false
+#/metrics endpoint configuration
+endpoints.metrics.id=metrics
+endpoints.metrics.sensitive=false
+endpoints.metrics.enabled=true
+# INFO ENDPOINT CONFIGURATION
+info.app.name=@project.name@
+info.app.description=@project.description@
+info.app.version=@project.version@
+info.app.encoding=@project.build.sourceEncoding@
+info.app.java.version=@java.version@
+#TRACKING
+admin.street.pax.tracking.estagio-pattern=M/d/yyyy h:mm:ss a
+admin.street.pax.tracking.pedidos-starting-days-before-now=300
+admin.street.pax.tracking.threads.consumers.count=2
+admin.street.pax.tracking.threads.consumers.priority=HIGHER
+admin.street.pax.tracking.threads.producers.priority=HIGHEST
+admin.street.pax.tracking.strict-mode=false
+# PAX-SOAP-CLIENT - *** PROD ***
+pax.webservice.url=https://sales.basissolution.com.br/WSSALES/VENDASPAX.svc
+pax.webservice.identificacao=TABAJARA
+pax.webservice.credencial=@2017TABAJARAPROD!
+pax.webservice.senha=50327102SEAVONORASSAP
+dxc.webservice.url=http://wshp09a.hml1.tabajara.local/CMS-STD-WEB-SERVICES-ACQUIRER/EDSws?wsdl

@@ -1,0 +1,162 @@
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %> {
+	server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['aceite.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %> { 
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['aceite.pessoa.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['cnae.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['conta.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['conta.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %> {
+	server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['endereco.server.port'] %>;
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['pessoa.port'] %>; 
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['pessoa.onboard.server.port'] %>; 
+        }	
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['telefone.server.port'] %>; 
+        }
+upstream <%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['ec.server.port'] %>; 
+        }
+	
+server {
+   listen 80;
+   access_log /var/log/nginx/validacao_access.log  timed;
+   server_name  <%= node['novo-cadu']['nginx'][node.chef_environment]['server.name'] %>;
+   root /usr/share/nginx/html/portal;
+   index index.html;
+
+   location /validacao-aceite {
+  access_log /var/log/nginx/validacao_aceite_access.log timed;  
+  proxy_pass http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %>/validacao-aceite;
+  proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+   }
+   
+   location /validacao-aceite-pessoa {
+  access_log /var/log/nginx/validacao_aceite_pessoa_access.log  timed;
+  proxy_pass http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %>/validacao-aceite-pessoa;
+  proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+
+   }
+   location /validacao-cnae {
+	access_log /var/log/nginx/validacao_cnae_access.log  timed;
+  proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %>/validacao-cnae;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+
+    }
+   location /validacao-conta {
+       access_log /var/log/nginx/validacao_conta_access.log  timed;
+       proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %>/validacao-conta;
+       proxy_set_header        Accept-Encoding   "";
+       add_header              X-Backend-Server $hostname;
+       proxy_set_header        Host            $host;
+       proxy_set_header        X-Real-IP       $remote_addr;
+       proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header        X-Forwarded-Proto $scheme;
+       proxy_http_version 1.1;
+       #proxy_set_header Connection "";
+    }
+   location /validacao-email {
+	access_log /var/log/nginx/validacao_email_access.log  timed;
+        proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %>/validacao-email;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+
+    }
+   location /validacao-endereco {
+	access_log /var/log/nginx/validacao_endereco_access.log  timed;
+	proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %>/validacao-endereco;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+    }
+   location /validacao-pessoa {
+	access_log /var/log/nginx/validacao_pessoa_access.log  timed;
+        proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %>/validacao-pessoa;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+
+    }
+   location /validacao-pessoa-onboard {
+	access_log /var/log/nginx/validacao_pessoa_onboard_access.log  timed;
+        proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %>/validacao-pessoa-onboard;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+
+  }
+   location /validacao-telefone {
+	access_log /var/log/nginx/validacao_telefone_access.log  timed;
+        proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %>/validacao-telefone;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+  }
+   location /validacao-ec {
+	access_log /var/log/nginx/validacao_ec_access.log  timed;
+        proxy_pass   http://<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %>/validacao-ec;
+	proxy_set_header        Accept-Encoding   "";
+        add_header              X-Backend-Server $hostname;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+  }
+
+   location / {
+    try_files $uri $uri/ @rewrites;
+   }
+
+   location @rewrites {
+    rewrite ^(.+)$ /index.html last;
+   }
+
+   location ~* \.(?:ico|css|js|gif|jpe?g|png)$ {
+    # Some basic cache-control for static files to be sent to the browser
+    expires max;
+    add_header Pragma public;
+    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+   }
+}

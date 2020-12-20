@@ -1,0 +1,13 @@
+server.servlet.context-path=/validacao-telefone
+server.port=<%= node['novo-cadu']['app'][node.chef_environment]['telefone.server.port'] %> 
+datasource.url=jdbc:oracle:thin:@<%= node['novo-cadu']['app'][node.chef_environment]['datasource.host'] %>:1521:<%= node['novo-cadu']['app'][node.chef_environment]['datasource.db'] %>
+datasource.username=<%= node['novo-cadu']['app'][node.chef_environment]['db.user'] %>
+datasource.password=<%= node['novo-cadu']['app'][node.chef_environment]['db.passwd'] %>
+datasource.driver-class-name=org.hibernate.dialect.Oracle10gDialect
+datasource.setMinPoolSize = 3
+datasource.setAcquireIncrement = 5
+datasource.setMaxPoolSize = 20
+datasource.setMaxStatements = 180
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=false
+management.endpoint.health.show-details=always

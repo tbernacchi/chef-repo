@@ -1,0 +1,6 @@
+# Programacao para adicionar script:
+
+
+## Monitoria dos incidentes da Slayer
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/matera/monit-edi-matera.sh  > /dev/null 2>&1
+

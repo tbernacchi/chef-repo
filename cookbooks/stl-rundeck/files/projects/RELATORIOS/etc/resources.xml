@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <node name="user-svc_deploy_prod@repo.tabajara.intranet"
+        description="Servidor de repo de rpm"
+        tags="PROD, Repo"
+        hostname="repo.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+  <node name="user-cdadm@vintws001.tabajaradc.local"
+        description="Servidor vintws"
+        tags="PROD"
+        hostname="vintws001.tabajaradc.local"
+        osName="Linux"
+        username="cdadm"
+        ssh-password-storage-path="keys/nodes/user-cdadm"
+        ssh-authentication="password"/>
+    <node name="user-root@zgossip01.tabajara.intranet"
+        description="Servidor da geracao de pedido"
+        tags="PRD, pedido, srv01"
+        hostname="zgossip01.tabajara.intranet"
+        osName="Linux"
+        username="root"
+        ssh-password-storage-path="keys/nodes/user-root"
+        ssh-authentication="password"/>
+</project>

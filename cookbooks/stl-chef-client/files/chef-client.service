@@ -1,0 +1,15 @@
+[Unit]
+Description=Chef Client service 
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/chef-client
+ExecStart=/usr/bin/chef-client -c $CONFIG -i $INTERVAL -s $SPLAY $OPTIONS -L $LOGFILE
+ExecStop=/bin/kill -TERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+SuccessExitStatus=3
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

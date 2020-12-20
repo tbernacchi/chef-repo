@@ -1,0 +1,4 @@
+# Programacao para adicionar script:
+
+# clean dos logs
+01 */4 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 10` /usr/local/bin/manut-rundeck/clean-json-log.sh > /dev/null 2>&1

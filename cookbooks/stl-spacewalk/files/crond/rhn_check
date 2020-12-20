@@ -1,0 +1,1 @@
+* */4 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/sbin/rhn_check > /dev/null 2>&1

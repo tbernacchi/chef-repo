@@ -1,0 +1,14 @@
+[Unit]
+Description = App validacao-aceite-pessoa
+After = syslog.target
+
+[Service]
+User = svc-validacao
+WorkingDirectory = /app/standalone/validacao-aceite-pessoa/
+ExecStart = /usr/bin/java -Xmx128m -Xss1m -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8082 /app/standalone/validacao-aceite-pessoa/validacao-aceite-pessoa.jar --spring.config.location=classpath:file:/app/standalone/validacao-aceite-pessoa/conf/application.properties
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

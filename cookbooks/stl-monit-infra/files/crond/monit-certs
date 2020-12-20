@@ -1,0 +1,25 @@
+#######
+##
+## Monitoria de certificados do ambiente tabajara
+################################################################################################################################################################
+################################################################################################################################################################
+
+#####
+
+# Programacao para adicionar script:
+
+# *.tabajara.com.br
+* */3 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-certs/check-ssl.sh www.tabajara.com.br 10.150.27.41 > /dev/null 2>&1
+
+# *.hml.tabajara.com.br
+* */3 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-certs/check-ssl.sh credenciamento.hml.tabajara.com.br 10.150.238.4 > /dev/null 2>&1
+
+
+# credenciamento.tabajara.com.br
+#* */12 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-certs/check-ssl.sh credenciamento.tabajara.com.br > /dev/null 2>&1
+
+# portalvendedor.tabajara.com.br
+#* */12 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-certs/check-ssl.sh portalvendedor.tabajara.com.br > /dev/null 2>&1
+
+# api.tabajara.com.br
+#* */12 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-certs/check-ssl.sh api.tabajara.com.br > /dev/null 2>&1

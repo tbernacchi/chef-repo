@@ -1,0 +1,92 @@
+logging:
+  level.: INFO
+  file: <%= node['siloc']['en_cip'][node.chef_environment]['log_path'] %>
+
+server:
+  port: <%= node['siloc']['en_cip'][node.chef_environment]['app_port'] %>
+
+
+management:
+  security:
+    enabled: false
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active: 5
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+cip:
+  ispb:
+    xml:
+      encoding: UTF-16BE
+
+siloc:
+  entrada:
+    cip:
+      tabajara:
+        seguranca:
+          chaveprivada:
+            jks:
+              arquivo: <%= node['siloc']['en_cip'][node.chef_environment]['privateKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: slc-p006
+              senha: tabajara123
+              politicaCertificado: Serasa
+          chavepublica:
+            jks:
+              arquivo: <%= node['siloc']['en_cip'][node.chef_environment]['publicKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: slc-p006
+              senha: tabajara123
+              politicaCertificado: Serasa
+      cip:
+        diretorio:
+          entrada: <%= node['siloc']['en_cip'][node.chef_environment]['cip_dir'] %>
+        seguranca:
+          3des:
+            padding: false
+          chavepublica:
+            jks:
+              arquivo: <%= node['siloc']['en_cip'][node.chef_environment]['cip_publicKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: cip-p002
+              senha: tabajara123
+              politicaCertificado: Serasa
+      processar:
+        diretorio: <%= node['siloc']['en_cip'][node.chef_environment]['proc_dir'] %>
+        extensao: cip
+        log:
+          hexa:
+            logar: true
+            diretorio: <%= node['siloc']['en_cip'][node.chef_environment]['proc_log_hexa'] %>
+            extensao: cip.txt
+          xml:
+            logar: true
+            diretorio: <%= node['siloc']['en_cip'][node.chef_environment]['proc_log_xml'] %>
+            extensao: xml

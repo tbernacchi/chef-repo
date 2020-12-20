@@ -1,0 +1,389 @@
+description: Application access. 
+context:
+  application: rundeck
+for:
+  project:
+  - allow: read
+  storage:
+  - allow: [read]
+
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'TRANSACIONAL'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'SILOC'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'PORTALADMIN'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'CADU-2.0'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'API-TRANSACIONAL'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'AGENDAMENTO-PAGAMENTO-TIF'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'DFIN'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'MIS'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'SUSTENTACAO'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'STREET'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'FORNECEDORES'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'PRE-PAGO'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'CREDENCIAMENTO'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'API-MONITOR'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'M1'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'PAGAMENTO'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: 'INFRA-ADMIN'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: [read, run, kill]
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Desenvolvimento
+
+
+---

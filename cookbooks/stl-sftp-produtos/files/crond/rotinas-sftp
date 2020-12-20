@@ -1,0 +1,17 @@
+#######
+##
+## Script que faz o sync do glusterfs remoto para o disco local
+## dessa forma fica independente da rede para servidor os arquivos 
+## do marketing.tabajara.intranet 
+###
+#######
+
+################################################################################################################################################################
+################################################################################################################################################################
+
+#####
+
+# Programacao para adicionar script:
+
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/rotinas-sftp/exec_rsync_gluster_2_local.sh > /dev/null 2>&1
+

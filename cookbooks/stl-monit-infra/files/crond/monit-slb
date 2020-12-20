@@ -1,0 +1,49 @@
+#######
+##
+## Script de monitoria dos VIPs configurados no ambiente
+###
+#######
+
+################################################################################################################################################################
+################################################################################################################################################################
+
+#####
+
+# Programacao para adicionar script:
+
+# Monitoria dos VIPs configurados
+# Monitoria do novo portal
+
+## FE
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-slb/check-by-vip-status.sh lbfe01.tabajara.local root Cbl2A98n > /dev/null 2>&1
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-slb/check-by-vip-status.sh lbfe02.tabajara.local root Cbl2A98n > /dev/null 2>&1
+
+## BE
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-slb/check-by-vip-status.sh lbbe01.tabajara.local root Bylu2U8S > /dev/null 2>&1
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-slb/check-by-vip-status.sh lbbe02.tabajara.local root Bylu2U8S > /dev/null 2>&1
+
+## Grafico da caixa do SLB
+
+## FE
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/monit-slb/check-slb-tcp.sh lbfe01.tabajara.local root Cbl2A98n > /dev/null 2>&1
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/monit-slb/check-slb-tcp.sh lbfe02.tabajara.local root Cbl2A98n > /dev/null 2>&1
+
+## BE
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/monit-slb/check-slb-tcp.sh lbbe01.tabajara.local root Bylu2U8S > /dev/null 2>&1
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/monit-slb/check-slb-tcp.sh lbbe02.tabajara.local root Bylu2U8S > /dev/null 2>&1
+
+
+## QA E DEV
+## FE
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-slb/check-by-vip-status.sh lbqa01.tabajara.local root GAg3Ylkw > /dev/nu
+
+# Grafico da caixa do SLB
+## QA1
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/monit-slb/check-slb-tcp.sh lbqa01.tabajara.local root GAg3Ylkw > /dev/null 2>&1
+
+# Criamos os vips no zabbix
+# FE
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 300`; /usr/local/bin/monit-slb/create-vip-in-zabbix.sh lbfe01.tabajara.local root Cbl2A98n > /dev/null 2>&1
+
+# BE
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 300`; /usr/local/bin/monit-slb/create-vip-in-zabbix.sh lbbe01.tabajara.local root Bylu2U8 > /dev/null 2>&1

@@ -1,0 +1,1 @@
+ip route add 148.91.232.221 via 10.151.57.34 dev ens160

@@ -1,0 +1,4 @@
+[Service]
+Environment="HTTP_PROXY=<%= node['docker'][node.chef_environment]['http_proxy'] %>"
+Environment="HTTPS_PROXY=<%= node['docker'][node.chef_environment]['http_proxy'] %>"
+Environment="NO_PROXY=.tabajara.local, .tabajara.intranet, 10.0.0.0/8"

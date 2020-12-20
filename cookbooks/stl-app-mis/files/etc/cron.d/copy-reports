@@ -1,0 +1,11 @@
+#######
+##
+
+# Programacao para adicionar script:
+
+# Script para copia de reports (fat,equi,etc) para o TWS
+#*/30 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/move-transfer/copy-reports-cad-con-equ-fat-2-tws.sh  > /dev/null 2>&1
+
+# Script para copia de reports (base-full) para o TWS
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/move-transfer/copy-reports-base-full-2-tws.sh > /dev/null 2>&1
+

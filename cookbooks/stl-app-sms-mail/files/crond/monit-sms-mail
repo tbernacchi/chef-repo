@@ -1,0 +1,6 @@
+##### 
+# Programacao para adicionar script: 
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monits-sms-email/check-age-log-sms.sh > /dev/null 2>&1
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monits-sms-email/seek-shell.sh > /dev/null 2>&1
+*/30 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monits-sms-email/total-msg.sh > /dev/null 2>&1
+

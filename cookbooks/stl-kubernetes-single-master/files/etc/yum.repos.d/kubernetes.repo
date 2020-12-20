@@ -1,0 +1,5 @@
+[kubernetes]
+name=Kubernetes repo
+baseurl=http://repo.tabajara.intranet/repos/kubernetes/
+gpgcheck=0
+enabled=1

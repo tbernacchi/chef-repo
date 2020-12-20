@@ -1,0 +1,4 @@
+# Programacao para adicionar script:
+
+## Coleta os sizes das mq
+*/10 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/rabbitmq/get-mq-sizes.sh  > /dev/null 2>&1

@@ -1,0 +1,12 @@
+/var/log/rundeck/service.log
+{
+    su rundeck rundeck
+    missingok
+    daily
+    copytruncate
+    rotate 7
+    notifempty
+    postrotate
+      find /var/log/rundeck -type f  -ctime +7 -exec rm '{}' ';'
+    endscript
+}

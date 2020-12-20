@@ -1,0 +1,7 @@
+cookbook_file '/etc/sudoers' do
+ source 'sudoers-quiabo'
+ owner 'root'
+ group 'root'
+ mode '0644'
+ action :create
+end

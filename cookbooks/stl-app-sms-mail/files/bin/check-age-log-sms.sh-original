@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# LOG FORMAT: sms-mail-dispatcher.log.2018-04-24
+
+# DATA
+DT=`date +%Y-%m-%d`
+
+LIMIT_DSEMANA="900"
+LIMIT_DFSABDOM="900"
+
+FILELOG="/opt/app/logs/sms-mail-dispatcher.log.$DT"
+
+LAST_CHANGE=`stat -c %y $FILELOG`
+
+DT_CONV=`date -d "$LAST_CHANGE" +%s`
+
+DT_NOW=`date +%s`
+
+#  %w   day of week (0..6); 0 is Sunday
+
+DIF=`echo "$DT_NOW - $DT_CONV" | bc`
+
+TODAY_NUM=`date +%w`
+
+HOST=`hostname` 
+
+## Agente de envio 
+ZBXPRX="zbxprx01.tabajara.local" 
+ZBXSND=$(which zabbix_sender)  
+
+fn_send_zabbix_critical()         
+	{         
+	MSG_CRITICAL="$LAST_CHANGE - CRITICAL - Possivel problema com SMS Software Express"          
+	$ZBXSND -z $ZBXPRX -s $HOST -k log-sms -o "$MSG_CRITICAL"         
+	}  
+
+fn_send_zabbix_ok()         
+	{         
+	$ZBXSND -z $ZBXPRX -s $HOST -k log-sms -o "0"        
+	}
+
+if [ $TODAY_NUM == 1 ] || [ $TODAY_NUM == 2 ] || [ $TODAY_NUM == 3 ] || [ $TODAY_NUM == 4  ] || [ $TODAY_NUM == 5 ] 
+	then
+		echo $LIMIT_DSEMANA
+		if [ $DIF -gt $LIMIT_DSEMANA ]
+			then
+				fn_send_zabbix_critical
+			else
+				fn_send_zabbix_ok
+		fi 
+	else
+		echo $LIMIT_DFSABDOM 
+		if [ $DIF -gt $LIMIT_DFSABDOM ]
+			then
+				fn_send_zabbix_critical
+			else
+				fn_send_zabbix_ok
+		fi
+fi
+
+

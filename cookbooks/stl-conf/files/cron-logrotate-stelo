@@ -1,0 +1,2 @@
+# Executa o logorate mais vezes durante o dia
+5 */6 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 300`; /usr/local/bin/run-logrotate-tabajara > /dev/null 2>&1

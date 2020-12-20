@@ -1,0 +1,40 @@
+#Permite ao servidor sincronizar sem modificações no serviço
+restrict default kod nomodify notrap nopeer
+
+#Permite acesso ao localhost
+restrict 127.0.0.1
+
+#Libera Rede Local
+restrict 10.0.0.0 mask 255.0.0.0 nomodify notrap
+
+#server pool
+pool pool.ntp.org iburst prefer
+pool pool.ntp.br iburst
+
+#Servidores para Sincronismo
+server ntp.cais.rnp.br iburst
+server ntp1.pucpr.br iburst
+server ntp.pop-rs.rnp.br iburst
+
+#peers - internos - alias do 1 zodiaco01.tabajara.intranet e o 2 ao 4 do pool-zeloso
+peer ntp01.tabajara.intranet
+peer ntp02.tabajara.intranet
+peer ntp03.tabajara.intranet
+peer ntp04.tabajara.intranet
+
+## local server
+server  127.127.1.0
+fudge   127.127.1.0 stratum 10
+
+driftfile /var/lib/ntp/drift
+
+# estatisticas do ntp que permitem verificar o historico
+# de funcionamento e gerar graficos
+statsdir /var/log/ntpstats/
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+## NTP log file
+logfile /var/log/ntp.log

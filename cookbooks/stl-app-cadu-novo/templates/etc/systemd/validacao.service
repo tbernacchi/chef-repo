@@ -1,0 +1,14 @@
+[Unit]
+Description = App <%= @app_name %>
+After = syslog.target
+
+[Service]
+User = svc-validacao
+WorkingDirectory = /app/standalone/validacao/
+ExecStart = /usr/bin/java -Xmx128m -Xss1m -jar -Djava.net.preferIPv4Stack=true -Dserver.port=<%= node['cadu-novo']['app'][node.chef_environment]['aceite.server.port'] %>/app/standalone/validacao/<%= @app_name %>.jar --spring.config.location=classpath:file:/app/standalone/<%= @app_name %>/conf/application.properties
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

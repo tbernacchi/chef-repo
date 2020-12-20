@@ -1,0 +1,18 @@
+## Contrab com os monitoramentos do healthcheck das apps
+# Entrada CIP
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado01.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado01.tabajara.intranet 8024 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado01.tabajara.intranet -k q1-entrada-cip -o "$hc" && unset hc
+
+# Entrada tabajara
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado01.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado01.tabajara.intranet 8023 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado01.tabajara.intranet -k q1-entrada-tabajara -o "$hc" && unset hc
+
+# Saida tabajara
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado02.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado02.tabajara.intranet 8020 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado02.tabajara.intranet -k q2-saida-tabajara -o "$hc" && unset hc
+
+# Saida CIP
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado02.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado02.tabajara.intranet 8021 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado02.tabajara.intranet -k q2-saida-cip -o "$hc" && unset hc
+
+# Processamento xml
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado03.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado03.tabajara.intranet 8022 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado03.tabajara.intranet -k q3-processamento-tabajara -o "$hc" && unset hc
+
+# credenciamento
+*/1 * * * * root ZBX_PROXY=$(curl -s http://zabbix.tabajara.local/zabbix-balancer/zabbix-balancer-list-client | grep quadrado03.tabajara.intranet | awk -F: '{print $2}' | awk -F, '{print $1}') && hc=$(python /usr/local/bin/monit-siloc/check_health.py quadrado03.tabajara.intranet 8026 health) && /usr/bin/zabbix_sender -z $ZBX_PROXY -s quadrado03.tabajara.intranet -k q3-credenciamento -o "$hc" && unset hc

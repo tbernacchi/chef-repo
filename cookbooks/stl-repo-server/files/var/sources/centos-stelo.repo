@@ -1,0 +1,41 @@
+[base]
+name=CentOS Base
+baseurl=http://repo.tabajara.intranet/repos/base/
+gpgcheck=0
+enabled=1
+
+[centosplus]
+name=CentOS CentOSPlus
+baseurl=http://repo.tabajara.intranet/repos/centosplus/
+gpgcheck=0
+enabled=1
+
+[extras]
+name=CentOS Extras
+baseurl=http://repo.tabajara.intranet/repos/extras/
+gpgcheck=0
+enabled=1
+
+[updates]
+name=CentOS Updates
+baseurl=http://repo.tabajara.intranet/repos/updates/
+gpgcheck=0
+enabled=1
+
+[third-party]
+name=CentOS Third-party
+baseurl=http://repo.tabajara.intranet/repos/third-party/
+gpgcheck=0
+enabled=1
+
+[chef]
+name=Chef Client
+baseurl=http://repo.tabajara.intranet/pacotes/base/chef/
+gpgcheck=0
+enabled=1
+
+[zabbix]
+name=Zabbix 
+baseurl=http://repo.tabajara.intranet/pacotes/base/zabbix/
+gpgcheck=0
+enabled=1

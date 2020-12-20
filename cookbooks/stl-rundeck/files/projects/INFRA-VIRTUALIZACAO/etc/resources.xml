@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <node name="user-svc-virt-prod@infrajobs01.tabajara.local"
+        description="Servidor Windows de jobs de infra tabajara"
+        tags="PRD"
+        hostname="infrajobs01.tabajara.local"
+        osName="Windows"
+        username="svc-virt-prod"
+        ssh-password-storage-path="keys/nodes/user-svc-virt-prod"
+        ssh-authentication="password"/>
+  <node name="user-svc_deploy_prod@repo.tabajara.intranet"
+        description="Servidor de repo de rpm"
+        tags="PROD, Repo"
+        hostname="repo.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+</project>

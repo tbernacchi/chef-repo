@@ -1,0 +1,8 @@
+*/2  *  *  *  * svc_cip_ft /opt/silocarquivos/scripts/prd_job_cip_to_siloc.sh
+30  2   *  * 1-5 svc_cip_ft /opt/silocarquivos/scripts/prd_job_cip_to_siloc.sh
+*/5  *  *  *  * svc_cip_ft /opt/silocarquivos/scripts/prd_job_move_cnab.sh
+*/2  *  *  *  * svc_cip_ft /opt/silocarquivos/scripts/prd_job_siloc_to_cip.sh
+*/1  *  *  *  * svc_cip_ft /opt/silocarquivos/scripts/prd_mon_retfile.sh
+*/2  *  *  *  * svc_cip_ft /opt/scripts/hml/hml_job_cip_to_siloc.sh
+*/30 *  *  *  * root   /opt/silocarquivos/scripts/prd_job_cnab_cip_to_hp.sh
+*/2  *  *  *  * svc_cip_ft /opt/silocarquivos/scripts/prd_job_conciliacao_retorno.sh

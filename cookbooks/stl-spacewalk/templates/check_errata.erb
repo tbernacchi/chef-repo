@@ -1,0 +1,36 @@
+#!/bin/bash
+
+export SPACEWALK_USER='admin'
+export SPACEWALK_PASS='<%= node['spacewalk-server']['spacewalk']['password'] %>'
+
+SCRIPT="errata-import"
+LOCK="/var/run/${SCRIPT}.lock"
+SWSERVER="<%= node['fqdn'] %>"
+ERRATA_FILE=/var/spacewalk/errata.latest.xml
+OVAL_FILE=/var/spacewalk/com.redhat.rhsa-all.xml
+
+trap 'rm $LOCK' 0 2 3 9 15
+
+if [ -e $LOCK ]
+        then
+                echo "script is already running"
+                exit 0
+        else
+        touch $LOCK
+
+        if [ -e $ERRATA_FILE ]; then
+        #Get the newest errata file
+        /bin/rm $ERRATA_FILE $OVAL_FILE
+	curl -x px.vmcommerce.intra:3128 https://raw.githubusercontent.com/stevemeier/cefs/master/errata.latest.xml > $ERRATA_FILE
+        curl -x px.vmcommerce.intra:3128 https://www.redhat.com/security/data/oval/com.redhat.rhsa-all.xml > $OVAL_FILE
+
+        else
+		curl -x px.vmcommerce.intra:3128 https://raw.githubusercontent.com/stevemeier/cefs/master/errata.latest.xml > $ERRATA_FILE
+	        curl -x px.vmcommerce.intra:3128 https://www.redhat.com/security/data/oval/com.redhat.rhsa-all.xml > $OVAL_FILE
+        fi
+
+        #Import Errata and OVAL files to Spacewalk Server
+
+        /usr/bin/perl /var/spacewalk/errata-import.pl --server $SWSERVER --errata $ERRATA_FILE --rhsa-oval $OVAL_FILE --bugfix --security --publish
+
+fi

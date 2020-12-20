@@ -1,0 +1,8 @@
+#######
+##
+
+#####
+
+# Programacao para adicionar script:
+*/3 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/monit-rundeck/get-status-jobs-rundeck.sh  > /dev/null 2>&1
+

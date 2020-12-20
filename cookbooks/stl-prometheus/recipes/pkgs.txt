@@ -1,0 +1,4 @@
+pcre 
+pcre-devel
+zlib-devel.x86_64
+openssl-devel

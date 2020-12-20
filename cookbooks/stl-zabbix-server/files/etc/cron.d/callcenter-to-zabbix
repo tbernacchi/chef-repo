@@ -1,0 +1,4 @@
+# Scripts de integracao do Zabbix
+
+# integracao com o Jira SD
+*/4 * * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/integracao-jira/get-callcenter-to-zabbix.sh >/dev/null 2>&1

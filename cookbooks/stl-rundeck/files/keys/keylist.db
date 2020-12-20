@@ -1,0 +1,33 @@
+# Padrao
+# user|pass
+exemplo-node.tabajara.intranet|exempulo
+
+# ################################ #
+#       Infra                      #
+# ################################ #
+svc-virt-prod|kwf4384R?
+cdadm|7vPAOHOukPtRPanAkUfn
+
+# geral
+root|mudar123
+root-new|kwf4384R?
+
+# CI/CD
+svc_deploy_prod|Ge7iej8gaj
+svc_deploy_qa|keixu6Vai3
+
+# Oracle
+oracle-vintws001.tabajaradc.local|7vPAOHOukPtRPanAkUfn
+oracle-vbnwls001.prd1.tabajara.local|ZhE7umanO9
+oracle-vbnwlb002.prd1.tabajara.local|ZhE7umanO9
+oracle-vbnbus001.prd1.tabajara.local|ZhE7umanO9
+
+# CIP
+svc_cip_ft|$iLoC2018
+
+# Novo Cadastro
+svc-validacao|ZSf031Cdvzzy2
+
+# Oracle
+oracle-brasa01.tabajara.intranet|OrA5telo#but
+oracle-boxe01.tabajara.intranet|OrA5telo#but

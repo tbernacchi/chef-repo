@@ -1,0 +1,8 @@
+# Scripts de integracao do Zabbix
+
+# zabbix balancer para os clients 
+*/15 * * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 300`; /usr/local/bin/zabbix-balancer/zabbix-balancer-make-list.sh >/dev/null 2>&1
+
+# Zabbix Stale
+
+10 */2 * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 10`; /usr/local/bin/zabbix-stale/get-stale-event.sh >/dev/null 2>&1

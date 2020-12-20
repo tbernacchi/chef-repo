@@ -1,0 +1,15 @@
+db-name=<%= node['stl-spacewalk']['db']['sid'] %>
+db-name=<%= node['stl-spacewalk']['db']['hostname'] %>
+db-user=<%= node['stl-spacewalk']['db']['username'] %>
+db-password=<%= node['stl-spacewalk']['db']['password'] %>
+enable-ssl=<%= node['stl-spacewalk']['ssl']['enable_ssl'] %>
+ssl-set-ca-cert-passwd=<%= node['stl-spacewalk']['ssl']['ca_cert_passwd'] %> 
+ssl-set-renter-ca-cert-passwd=<%= node['stl-spacewalk']['ssl']['renter_ca_cert_passwd'] %> 
+ssl-set-cname="<%= node['fqdn'] %>" 
+ssl-set-org=<%= node['stl-spacewalk']['ssl']['org'] %> 
+ssl-set-org-unit=<%= node['stl-spacewalk']['ssl']['org_unit'] %>
+admin-email=<%= node['stl-spacewalk']['email'] %>
+ssl-set-city=<%= node['stl-spacewalk']['ssl']['city'] %>
+ssl-set-state=<%= node['stl-spacewalk']['ssl']['state'] %>
+ssl-set-country=<%= node['stl-spacewalk']['ssl']['country'] %>
+enable-tftp=<%= node['stl-spacewalk']['enable_tftp'] %>

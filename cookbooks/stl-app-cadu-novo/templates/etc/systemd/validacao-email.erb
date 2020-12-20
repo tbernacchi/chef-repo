@@ -1,0 +1,14 @@
+[Unit]
+Description = App validacao-email
+After = syslog.target
+
+[Service]
+User = svc-validacao
+WorkingDirectory = /app/standalone/validacao-email
+ExecStart = /usr/bin/java -Xmx128m -Xss1m -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8083 /app/standalone/validacao-email/validacao-email.jar --spring.config.location=classpath:file:/app/standalone/validacao-email/conf/application.properties
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

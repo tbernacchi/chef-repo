@@ -1,0 +1,8 @@
+# Programacao para adicionar script:
+
+## Monitoria dos tickets da Slayer
+*/8 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/monit-slayer/check-ticket-sl.sh  > /dev/null 2>&1
+
+## Monitoria dos incidentes da Slayer
+*/8 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/monit-slayer/check-incident-sl.sh  > /dev/null 2>&1
+

@@ -1,0 +1,150 @@
+upstream office_be {
+    server hquarteto01.qa.tabajara.intranet:7110;
+}
+
+upstream app_dxc-merchant {
+    server hquarteto02.qa.tabajara.intranet:7121 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_person {
+    server hquarteto02.qa.tabajara.intranet:7116 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_authorization {
+    server hquarteto02.qa.tabajara.intranet:7113 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_orders {
+    server hquarteto03.qa.tabajara.intranet:7118 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_chargeback {
+    server hquarteto03.qa.tabajara.intranet:7112 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_maquina-cartao {
+    server hquarteto03.qa.tabajara.intranet:7117 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_fees {
+    server hquarteto04.qa.tabajara.intranet:7119 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_transaction {
+    server hquarteto04.qa.tabajara.intranet:7120 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+upstream app_logistics {
+    server hquarteto04.qa.tabajara.intranet:7122 weight=1 max_fails=3 fail_timeout=5s;
+}
+
+server {
+    listen 80 default_server;
+    server_name office.qa.tabajara.intranet;
+    client_max_body_size 100M;
+    access_log /var/log/nginx/office_access.log  timed;
+
+    gzip on;
+    gzip_types application/javascript text/css font/woff2;
+
+    location / {
+        root /usr/share/nginx/html/dist;
+        index index.html;
+        try_files $uri /index.html;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+    }
+
+    location /static/ {
+        gzip on;
+        autoindex off;
+        alias /usr/share/nginx/html/dist/static/;
+    }
+
+    location /api {
+        proxy_pass http://oauth.qa.tabajara.intranet;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+    }
+
+    location ~ ^/portal/(login|logout|home|chargeback|vendedor|pedido|taxas-tarifa|email-ec-chargeback|gestao-permissao|receba-rapido|authorization|api) {
+        proxy_pass http://office_be;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+
+    location ~ ^/portal/(assets|vendor|resources|imagens|partials|static) {
+        proxy_pass http://office_be;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/authorization/{
+        proxy_pass http://app_authorization;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/person/ {
+        proxy_pass http://app_person;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/dxc-merchant/ {
+        proxy_pass http://app_dxc-merchant;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/orders/ {
+        proxy_pass http://app_orders;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/maquina-cartao/{
+        proxy_pass http://app_maquina-cartao;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/chargeback/{
+        proxy_pass http://app_chargeback;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/fees/{
+        proxy_pass http://app_fees;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/transaction/{
+        proxy_pass http://app_transaction;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+    location ~ ^/logistics/{
+        proxy_pass http://app_logistics;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        add_header X-Backend-Status        $upstream_status;
+    }
+}

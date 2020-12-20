@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+ <node name="user-oracle@vintws001.tabajaradc.local"
+        description="Node TWS"
+        tags="PRD"
+        hostname="vintws001.tabajaradc.local"
+        osName="Linux"
+        username="oracle"
+        ssh-password-storage-path="keys/nodes/user-oracle-vintws001.tabajaradc.local"
+        ssh-authentication="password"/>
+  <node name="user-svc_deploy_prod@repo.tabajara.intranet"
+	      description="Servidor de repo de rpm"
+        tags="PROD, Repo"
+        hostname="repo.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+ <node name="user-root@questor01.tabajara.intranet"
+        description="Pentaho Kettle TIF"
+        tags="PRD"
+        hostname="questor01.tabajara.intranet"
+        osName="Linux"
+        username="root"
+        ssh-password-storage-path="keys/nodes/user-root"
+        ssh-authentication="password"/>
+  <node name="user-root@questor02.tabajara.intranet"
+        description="Pentaho Kettle TIF"
+        tags="PRD"
+        hostname="questor02.tabajara.intranet"
+        osName="Linux"
+        username="root"
+        ssh-password-storage-path="keys/nodes/user-root"
+        ssh-authentication="password"/>
+</project>

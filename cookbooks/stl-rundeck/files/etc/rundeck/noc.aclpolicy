@@ -1,0 +1,33 @@
+description: Application access. 
+context:
+  application: rundeck
+for:
+  project:
+  - allow: read
+  storage:
+  - allow: [read]
+
+by:
+  group: Noc 
+
+---
+
+description : global project config for running jobs on nodes.
+context:
+  project: '.*'
+for:
+  resource:
+    - equals:
+        kind: 'event'
+      allow: read
+    - equals:
+        kind: 'node'
+      allow: [read, refresh, run] # allow refresh node sources (dynamic nodes resources)
+  job:
+  - allow: '*'
+  node:
+  - allow: [read, run]
+  storage:
+  - allow: [read]
+by:
+  group: Noc 

@@ -1,0 +1,7 @@
+# Scripts de integracao do Zabbix
+
+# integracao com o Jira SD
+*/1 * * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/integracao-jira/get-open-trigger-to-sd.sh && /usr/local/bin/integracao-jira/make-log.sh >/dev/null 2>&1
+
+# Rotate do log 
+#00 01 * * * root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/integracao-jira/rotate-log.sh >/dev/null 2>&1

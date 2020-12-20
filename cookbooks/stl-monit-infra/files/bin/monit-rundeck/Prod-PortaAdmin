@@ -1,0 +1,10 @@
+null null succeeded
+null null succeeded
+Start-Person-service null succeeded
+Stop-Person-service null succeeded
+Start-Fees-service null succeeded
+Stop-Fees-service null succeeded
+Start-Person-service null succeeded
+Stop-Chargeback-service null succeeded
+Restart-Nginx-All-Server null succeeded
+Restart-Nginx-All-Server null succeeded

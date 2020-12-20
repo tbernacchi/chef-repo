@@ -1,0 +1,26 @@
+apiVersion: kubeadm.k8s.io/<%= node['k8s'][node.chef_environment]['apiVersion'] %>
+kind: ClusterConfiguration
+kubernetesVersion: <%= node['k8s'][node.chef_environment]['kubernetesVersion'] %>
+clusterName: "<%= node['k8s'][node.chef_environment]['ClusterName'] %>"
+controlPlaneEndpoint: "<%= node['k8s'][node.chef_environment]['vip'] %>:6443"
+etcd:
+  external:
+    endpoints: <%= node['k8s'][node.chef_environment]['endpoints'] %>
+    caFile: <%= node['k8s'][node.chef_environment]['caFile'] %>
+    certFile: <%= node['k8s'][node.chef_environment]['certFile'] %>
+    keyFile: <%= node['k8s'][node.chef_environment]['keyFile'] %>
+apiServer:
+  certSANs:
+    - <%= node['k8s'][node.chef_environment]['vip'] %>
+    - <%= node['k8s'][node.chef_environment]['M01_ip'] %>
+    - <%= node['k8s'][node.chef_environment]['M02_ip'] %>
+    - <%= node['k8s'][node.chef_environment]['M03_ip'] %>
+    - <%= node['k8s'][node.chef_environment]['M01_fqdn'] %>
+    - <%= node['k8s'][node.chef_environment]['M02_fqdn'] %>
+    - <%= node['k8s'][node.chef_environment]['M03_fqdn'] %>
+  extraArgs:
+   apiserver-count: "3"
+networking:
+  serviceSubnet: "<%= node['k8s'][node.chef_environment]['serviceSubnet'] %>"
+  podSubnet: "<%= node['k8s'][node.chef_environment]['podSubnet'] %>"
+  dnsDomain: "<%= node['k8s'][node.chef_environment]['dnsDomain'] %>"

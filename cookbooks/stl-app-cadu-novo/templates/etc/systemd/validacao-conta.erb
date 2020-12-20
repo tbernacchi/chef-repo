@@ -1,0 +1,14 @@
+[Unit]
+Description = App validacao-conta
+After = syslog.target
+
+[Service]
+User = svc-validacao
+WorkingDirectory = /app/standalone/validacao-conta
+ExecStart = /usr/bin/java -Xmx128m -Xss1m -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8081 /app/standalone/validacao-conta/validacao-conta.jar --spring.config.location=classpath:file:/app/standalone/validacao-conta/conf/application.properties
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

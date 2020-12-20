@@ -1,0 +1,71 @@
+#######
+##
+## Script de monitoria de JOBs e arquivo de LOTES do ambiente produtivo da tabajara
+###
+#######
+
+################################################################################################################################################################
+################################################################################################################################################################
+
+#####
+
+# Programacao para adicionar script:
+
+# Monitoria do Job EXTRD0002
+*/30 * * * *  svc_zabbix_monit /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-sftp-tabajara.sh > /dev/null 2>&1
+
+# Monitoria do novo portal
+*/2 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check-portal-admin-new.sh > /dev/null 2>&1
+
+# Monitoria dos testes do Runscope
+
+*/2 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check-runscope.sh > /dev/null 2>&1
+
+# Monitoria dos testes de URL Pingdom
+
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check-pingdom.sh > /dev/null 2>&1
+
+# Monitoria do probe do credenciamento
+
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 30`;  /usr/local/bin/monit-jobs/check-credenciamento.sh > /dev/null 2>&1
+
+# Monitoria do probe do terminalseller-api
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 30`;  /usr/local/bin/monit-jobs/check-terminalseller-api.sh > /dev/null 2>&1
+
+# Monitoria do probe do bitcoin (zuriel)
+
+*/1 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/monit-jobs/check-bitcoin-transaction.sh > /dev/null 2>&1
+
+# Monitoria da quota de email do Mandrill
+
+*/12 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monit-jobs/check-quota-email-mandrill.sh > /dev/null 2>&1
+
+# Monitoria response time validacao through zuul
+*/1 * * * *   root /bin/sleep `/usr/bin/exprt $RANDOM \% 30`; /usr/local/bin/monit-jobs/response-time-valid.sh > /dev/null 2>&1
+
+# Monitoria de via IPMI dos status dos servidores
+
+*/3 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/monitoria-datacenter/get-status-hw-sl.sh > /dev/null 2>&1
+
+# Monitoria do SSH unreachable
+
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monit-jobs/nc-hosts-zabbix.sh > /dev/null 2>&1
+
+# Monitoria do tabajara Mini
+
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check-mini-tabajara.sh > /dev/null 2>&1
+
+# Monitoria da Software Express api
+
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check-software-express-api.sh > /dev/null 2>&1
+
+
+# Monitoria do tabajara Recadastro 
+
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-sustentacao/check-recadastro.sh > /dev/null 2>&1
+
+# Monitoria da Software Express api
+
+
+
+

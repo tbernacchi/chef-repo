@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case $1 in
+   qa)
+    cd ~ ; unlink .chef ; ln -s ~/.chef_qa ~/.chef
+   ;;
+   prod)
+    cd ~ ; unlink .chef ; ln -s ~/.chef_prod ~/.chef
+   ;;
+   who)
+   echo "";echo "Voce esta em: $( ls -alhtr ~/.chef|awk '{print $11 $12 $13}')" ; echo ""
+   ;;
+   *) echo "Uso: $0 env: <qa>, <prod> ou <who>"
+   ;;
+esac

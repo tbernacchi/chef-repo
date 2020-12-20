@@ -1,0 +1,8 @@
+/var/log/chef/client.log
+{
+    missingok
+    daily
+    copytruncate
+    rotate 7
+    notifempty
+}

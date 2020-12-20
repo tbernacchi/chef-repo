@@ -1,0 +1,5 @@
+[rundeck-release-binary]
+name=Rundeck tabajara
+baseurl=http://repo.tabajara.intranet/repos/rundeck-release-binary
+gpgcheck=0
+enabled=1

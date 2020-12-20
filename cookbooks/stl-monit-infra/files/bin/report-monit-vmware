@@ -1,0 +1,18 @@
+#######
+##
+# Envio de relatorios de VMs do ambiente e seus estados (VMWare)
+#####
+
+# Programacao para adicionar script:
+
+# *.tabajara.com.br
+00 13 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 15`; /usr/local/bin/reports/get-report-vmware.sh > /dev/null 2>&1
+
+# Envio de dados do VMWare / vCOPS para o Graylog /  Grafana
+
+*/10 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 5`; /usr/local/bin/metricas-vmware/get-metricas-vmware.sh > /dev/null 2>&1
+
+# Envio de alertas do VCops para o zabbix
+
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/metricas-vmware/get-alarms-vcops.sh > /dev/null 2>&1
+

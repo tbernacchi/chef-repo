@@ -1,0 +1,5 @@
+SHELL=/bin/bash 
+PATH=/sbin:/bin:/usr/sbin:/usr/bin 
+0 /5 * * * root /usr/local/bin/sync_fachada01_public.sh >/dev/null 2>&1 
+0 /5 * * * root /usr/local/bin/sync_fachada01_imagens.sh >/dev/null 2>&1 
+0 /5 * * * root /usr/local/bin/sync_images_glusterfs.sh >/dev/null 2>&1

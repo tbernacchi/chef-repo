@@ -1,0 +1,11 @@
+#!bin/bash
+if [ ! -f /opt/weave_install.status ]; then
+  export no_proxy="<%= node['infra'][node.chef_environment]['no_proxy'] %>"
+  export https_proxy="<%= node['infra'][node.chef_environment]['http_proxy'] %>"
+  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+  if [ $? -eq 0 ]; then
+    touch /opt/weave_install.status
+  else
+    rm -rf /opt/weave_install.status
+  fi
+fi

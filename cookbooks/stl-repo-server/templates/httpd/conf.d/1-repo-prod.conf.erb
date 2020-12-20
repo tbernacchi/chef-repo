@@ -1,0 +1,15 @@
+<VirtualHost repo.tabajara.intranet>
+    DocumentRoot "/var/www/html/prod"
+    ServerName repo.tabajara.intranet
+
+  <Location />
+    Order deny,allow
+    Deny from all
+
+    # Restricao para DEVQA nao usar em prod
+    Deny from <%= node['repo']['vlans']['devqa'] %>
+
+    # Permite somente prod
+    Allow from <%= node['repo']['vlans']['prod'] %>
+  </Location>
+</VirtualHost>

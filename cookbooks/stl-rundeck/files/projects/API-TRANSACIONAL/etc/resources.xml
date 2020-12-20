@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<node name="user-svc_deploy_qa@hqueratina01.qa.tabajara.intranet"
+	      description="Servidor de QA do api-transacional"
+        tags="QA, deploy-qa, API"
+        hostname="hqueratina01.qa.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_qa"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_qa"
+        ssh-authentication="password"/>
+<node name="user-svc_deploy_prod@queratina01.tabajara.intranet"
+	      description="Servidor de Prod do api-transacional"
+        tags="PROD, deploy-prod, API"
+        hostname="queratina01.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+<node name="user-svc_deploy_prod@queratina02.tabajara.intranet"
+	      description="Servidor de Prod do api-transacional"
+        tags="PROD, deploy-prod, API"
+        hostname="queratina02.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+<node name="user-svc_deploy_prod@repo.tabajara.intranet"
+	      description="Servidor de repo de rpm"
+        tags="PROD, Repo"
+        hostname="repo.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+</project>

@@ -1,0 +1,103 @@
+#loglevel.default is the default log level for jobs: ERROR,WARN,INFO,VERBOSE,DEBUG
+loglevel.default=<%= node['rundeck'][node.chef_environment]['loglevel.'] %>
+rdeck.base=<%= node['rundeck'][node.chef_environment]['rdeck.base'] %>
+
+#rss.enabled if set to true enables RSS feeds that are public (non-authenticated)
+rss.enabled=<%= node['rundeck'][node.chef_environment]['rss.enabled'] %>
+
+# change hostname here
+#grails.serverURL=<%= node['rundeck'][node.chef_environment]['grails.serverURL'] %>j
+grails.serverURL=<%= node['rundeck']['prod']['grails.serverURL'] %>
+#grails.serverURL=http://<%= node['fqdn'] %>:4440
+dataSource.dbCreate = <%= node['rundeck'][node.chef_environment]['dataSource.dbCreate'] %>
+dataSource.url =<%=node['rundeck'][node.chef_environment]['dataSource.url'] %>
+dataSource.username=<%= node['rundeck'][node.chef_environment]['dataSource.username'] %>
+dataSource.password=<%= node['rundeck'][node.chef_environment]['dataSource.password'] %>
+dataSource.driverClassName=com.mysql.jdbc.Driver
+
+# path log4j
+rundeck.log4j.config.file = <%= node['rundeck'][node.chef_environment]['rundeck.log4j.config.file'] %>
+
+# Configuracao para evitar race condition 08/03/2019 https://docs.rundeck.com/docs/history/changelog.html#release-3.0.12
+dataSource.properties.maxActive=200
+# https://github.com/rundeck/rundeck/issues/4677
+dataSource.properties.testOnBorrow=<%= node['rundeck'][node.chef_environment]['dataSource.properties.testOnBorrow'] %>
+dataSource.properties.testWhileIdle=<%= node['rundeck'][node.chef_environment]['dataSource.properties.testWhileIdle'] %>
+dataSource.properties.testOnReturn=<%= node['rundeck'][node.chef_environment]['dataSource.properties.testOnReturn'] %>
+
+# Configuracao em modo Cluster
+rundeck.clusterMode.enabled=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.enabled'] %>
+rundeck.clusterMode.remoteExecution.config.allowed = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.remoteExecution.config.allowed'] %>
+rundeck.clusterMode.remoteExecution.policy = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.remoteExecution.policy'] %>
+rundeck.clusterMode.remoteExecution.config.allowedTags = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.remoteExecution.config.allowedTags'] %>
+# Os projetos são armazenados na DB para funcionamento em Cluster
+rundeck.projectsStorageType=<%= node['rundeck'][node.chef_environment]['rundeck.projectsStorageType'] %>
+
+rundeck.executionMode = <%= node['rundeck'][node.chef_environment]['rundeck.executionMode'] %>
+
+#Habilitar a leitura de logs de execução no local file Storage
+rundeck.execution.logs.localFileStorageEnabled = <%= node['rundeck'][node.chef_environment]['rundeck.execution.logs.localFileStorageEnabled'] %>
+
+#formato da data
+jobslist.date.format=<%= node['rundeck'][node.chef_environment]['jobslist.date.format'] %>
+
+# aumento no número de threads do Quartz
+quartz.props.threadPool.threadCount = <%= node['rundeck'][node.chef_environment]['quartz.props.threadPool.threadCount'] %>
+
+#Configuracao da Gui para mostrar o node cluster no topo da pagina
+rundeck.gui.clusterIdentityInHeader = <%= node['rundeck'][node.chef_environment]['rundeck.gui.clusterIdentityInHeader'] %>
+rundeck.gui.clusterIdentityInFooter = <%= node['rundeck'][node.chef_environment]['rundeck.gui.clusterIdentityInFooter'] %>
+
+### Configuracao de Heartbeat
+
+# heartbeat interval in seconds
+rundeck.clusterMode.heartbeat.interval=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.heartbeat.interval'] %>
+
+# initial delay after startup to send heartbeat
+rundeck.clusterMode.heartbeat.delay=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.heartbeat.delay'] %>
+
+# remote execute/abort message processing interval in seconds
+rundeck.clusterMode.remoteExec.process.interval=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.remoteExec.process.interval'] %>
+
+# age in seconds since last heartbeat to consider another member inactive
+rundeck.clusterMode.heartbeat.considerInactive=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.heartbeat.considerInactive'] %>
+
+# age in seconds since last heartbeat to consider another member dead
+rundeck.clusterMode.heartbeat.considerDead=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.heartbeat.considerDead'] %>
+
+### Configuracoes de Load Balancing para Jobs
+rundeck.clusterMode.remoteExecution.config.criteria = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.remoteExecution.config.criteria'] %>
+
+### Configuracoes para Auto-takeover
+
+# enables autotakeover for members detected as "dead"
+rundeck.clusterMode.autotakeover.enabled=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.autotakeover.enabled'] %>
+
+# policy indicates which nodes to take over. "Any": all dead nodes. "Static": only allowed uuids
+rundeck.clusterMode.autotakeover.policy=<%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.autotakeover.policy'] %>
+
+# delay is seconds to wait after sending autotakeover proposal
+rundeck.clusterMode.autotakeover.delay = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.autotakeover.delay'] %>
+
+# sleep is minimum seconds between autotakeover atttempts for a particular destination
+rundeck.clusterMode.autotakeover.sleep = <%= node['rundeck'][node.chef_environment]['rundeck.clusterMode.autotakeover.sleep'] %>
+
+# SMTP config envio de emails
+grails.mail.host=<%= node['rundeck'][node.chef_environment]['grails.mail.host'] %>
+grails.mail.port=<%= node['rundeck'][node.chef_environment]['grails.mail.port'] %>
+
+# configs do Frontend..
+# Seta expiracao da api token: Format : nn{ydhms} -  0 = não expira
+rundeck.api.tokens.duration.max = <%= node['rundeck'][node.chef_environment]['rundeck.api.tokens.duration.max'] %>
+
+# seta Execution finalize retry
+# https://docs.rundeck.com/docs/administration/configuration/configuration-file-reference.html
+
+# attempt to retry the final state update
+rundeck.execution.finalize.retryMax=<%= node['rundeck'][node.chef_environment]['rundeck.execution.finalize.retryMax'] %>
+rundeck.execution.finalize.retryDelay=<%= node['rundeck'][node.chef_environment]['rundeck.execution.finalize.retryDelay'] %>
+
+# attempt to retry updating job statistics after execution finishes
+rundeck.execution.stats.retryMax=<%= node['rundeck'][node.chef_environment]['rundeck.execution.stats.retryMax'] %>
+rundeck.execution.stats.retryDelay=<%= node['rundeck'][node.chef_environment]['rundeck.execution.stats.retryDelay'] %>
+

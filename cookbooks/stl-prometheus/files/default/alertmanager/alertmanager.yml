@@ -1,0 +1,30 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: zabbix
+  routes:
+    - match:
+        alertname: HighCpuUsage
+      receiver: zabbix 
+
+receivers:
+
+- name: zabbix
+  webhook_configs:
+  - url: http://127.0.0.1:8080/alerts
+    send_resolved: true
+  email_configs:
+  - to: "carlos.fernandes@tabajara.com.br"
+    from: "tadeu.bernacchi@tabajara.com.br"
+    smarthost: "ziper01.tabajara.intranet:25"
+    hello: "ziper01.tabajara.intranet"
+    auth_username: "svc_k8s"
+    auth_identity: "svc_k8s"
+    auth_password: "gEppLTnVeCUZQD96mvu5"
+    require_tls: false
+

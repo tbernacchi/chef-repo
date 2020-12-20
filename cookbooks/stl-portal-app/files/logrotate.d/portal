@@ -1,0 +1,19 @@
+/var/log/nginx/portal/portal_access.log
+/var/log/nginx/portal/oauth_access.log
+/var/log/nginx/portal/relatorio_access.log
+/var/log/nginx/portal/ec_access.log
+/var/log/nginx/portal/prepago_access.log
+/var/log/nginx/portal/notificacao_access.log
+/var/log/nginx/portal/usuario_access.log
+{
+    missingok
+    sharedscripts
+    compress
+    postrotate
+	systemctl reload nginx
+    endscript
+    maxage 7
+    rotate 7
+    dateext dateformat -%Y-%m-%d-%s
+    dateyesterday
+}

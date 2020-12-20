@@ -1,0 +1,36 @@
+#######
+##
+# Envio de relatorios de VMs do ambiente e seus estados (VMWare)
+#####
+
+# Programacao para adicionar script:
+
+# COSTOP
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-costop.sh > /dev/null 2>&1
+
+# CPU e Memoria
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-cpu-mem-cluster.sh > /dev/null 2>&1
+
+# CPU - Pico e media
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-media-pico-cluster.sh > /dev/null 2>&1
+
+# CPU - Mhz
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-mhz-vms-vcops.sh > /dev/null 2>&1
+
+# CPU - Add reduce cpu
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-reduce-add-cpus.sh > /dev/null 2>&1
+
+# AVG- memoria
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-avg-mem.sh > /dev/null 2>&1
+
+# Monitoria de recurso de virtualizacao
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-resource-virt.sh > /dev/null 2>&1
+
+# Monitoria de recurso de virtualizacao vcpu-2-CPU
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-vcpu-2-cpu.sh > /dev/null 2>&1
+
+# Monitoria de recurso de virtualizacao - status realtime
+*/5 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 180`; /usr/local/bin/monitoria-integrada-vmware/get-vmware-status.sh > /dev/null 2>&1
+
+# Monitoria de recurso de virtualizacao - reduce add mem
+*/10 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 900`; /usr/local/bin/monitoria-integrada-vmware/get-reduce-add-mem.sh > /dev/null 2>&1

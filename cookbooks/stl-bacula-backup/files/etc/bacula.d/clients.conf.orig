@@ -1,0 +1,462 @@
+# Clients
+
+Client {
+  Name = zodiaco01.tabajara.intranet-fd
+  Address = zodiaco01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  Password = "oNq8cZernHECvEU7lcVoORlKKbAAerDzwuITb1OW/WMy"          # password for FileDaemon
+  File Retention = 60 days            # 60 days
+  Job Retention = 6 months            # six months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = monitinfra01.tabajara.local-dir
+  #Password = NR/3YrV1NsycVgPZqZDK+310Nv6co/AHpB+tLCHvMrmO
+  Password = "f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx"
+  Address = monitinfra01.tabajara.local
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = infrajobs01.tabajara.local-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = infrajobs01.tabajara.local
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = novoportal01.tabajara.local-dir
+  Password = $1$FKMWswHq$vJUvnT.owbtHtwiwqcxSy.
+  Address = novoportal01.tabajara.local
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = zuido01.tabajara.intranet-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = zuido01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+##
+
+Client {
+  Name = vbnbus001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.132.200
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnbus002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.132.214
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = vbnsoa001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.6
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnsoa002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.7
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnwls001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.8
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnwls002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.9
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnwlb001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.10
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnwlb002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.11
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnohs001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.12
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnohs002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.13
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnoud001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.14
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnoud002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.15
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = vbnoam001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.16
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = vbnoam002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.17
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = vbnwcs001.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.18
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = vbnwcs002.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.217.19
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = fachada01.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = fachada01.prd1.tabajara.local
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = fachada02.prd1.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = fachada02.prd1.tabajara.local
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+##
+
+Client {
+  Name = git.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = zunido01.tabajara.local 
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+#################################################
+####                                        #####
+#### Servidores do AD tabajarad.local          #####
+####                                        #####
+#################################################
+
+Client {
+  Name = AD-TABAJARADC-10.150.251.50-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = 10.150.251.50
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = AD-TABAJARADC-192.168.4.53-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = 192.168.4.53
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+#################################################
+####                                        #####
+#### Servidores do AD tabajara.corp            #####
+####                                        #####
+#################################################
+
+Client {
+  Name = AD-TABAJARA.CORP-192.168.4.50-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = 192.168.4.50
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+Client {
+  Name = AD-TABAJARA.CORP-10.140.84.10-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = 10.140.84.10
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+#################################################
+####                                        #####
+#### Servidor de banco de dados BUTANCLAN01 #####
+####                                        #####
+#################################################
+
+Client {
+  Name = BD-BUTANCLA01-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = butanclan01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+Client {
+  Name = BD-BUTANCLAN01-PRDCOBK-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = butanclan01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 7 days
+  Job Retention = 6 months
+  AutoPrune = yes                     # Prune expired Jobs/Files
+}
+
+
+#################################################
+####                                        #####
+#### Servidor de banco de dados BRASA01 DG  #####
+####                                        #####
+#################################################
+
+Client {
+  Name = BD-BRASA01-dir
+  Password = iPW8QbQWjaDQmX9V8XcSnyy8YRuIgeWIQcBK1o2y1IFVW
+  Address = brasa01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes
+}
+
+###########################################################################
+####                                                                  #####
+#### Servidor bridge para os backups de infra (tambem sera ftp (t|s)) #####
+####                                                                  #####
+###########################################################################
+
+Client {
+  Name = zipado01-BACKUP-BRIDGE-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx 
+  Address = zipado01.tabajara.intranet
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes
+}
+
+###########################################################################
+####                                                                  #####
+#### Servidor PROXY e NTP do ambiente 				      #####
+####                                                                  #####
+###########################################################################
+
+Client {
+  Name = PROXY-10.150.42.181-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx 
+  Address = 10.150.42.181
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes
+}
+
+Client {
+  Name = PROXY-10.150.42.189-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx 
+  Address = 10.150.42.189
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 30 days
+  Job Retention = 6 months
+  AutoPrune = yes
+}
+
+
+####  TWS - vintws
+Client {
+  Name = VINTWS001.tabajaradc.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.42.167
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 365 days
+  Job Retention = 12 months
+  AutoPrune = yes
+}
+
+
+# Zureta - Jobs Street
+Client {
+  Name = zureta01.tabajara.local-dir
+  Password = f13IGu4inGdgpfQL7VvoEsThGwutb1iKBgBdSMbWNHEBx
+  Address = 10.150.251.61
+  FDPort = 9102
+  Catalog = MyCatalog
+  File Retention = 365 days
+  Job Retention = 12 months
+  AutoPrune = yes
+}

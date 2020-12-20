@@ -1,0 +1,6 @@
+default['keepalived']['qa']['interface'] = 'ens160'
+default['keepalived']['qa']['virtal_ip'] = '10.150.174.186'
+default['keepalived']['qa']['master_prio'] = '101'
+default['keepalived']['qa']['bakup_prio'] = '100'
+default['keepalived']['qa']['pass'] = '$t&l0'
+default['keepalived']['qa']['script_path'] = '/etc/keepalived/check_apiserver.sh'

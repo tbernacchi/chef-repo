@@ -1,0 +1,2 @@
+#Monitoria do cluster de MongoDB
+*/3 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/monit-mongo/mongo_monitoring.sh > /dev/null 2>&1

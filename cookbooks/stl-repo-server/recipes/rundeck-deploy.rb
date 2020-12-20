@@ -1,0 +1,29 @@
+#
+# Cookbook:: stl-repo-server
+# Recipe:: rundeck_deploy
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+directory "/usr/local/bin/rundeck-deploy/" do
+ owner "svc_deploy_prod"
+ group "nobody"
+ mode 0755
+ action :create
+ recursive true
+end
+
+cookbook_file "/usr/local/bin/rundeck-deploy/promote-pkg-to-prod.sh" do
+ source "promote-pkg-to-prod.sh"
+ owner "svc_deploy_prod"
+ group "nobody"
+ mode "0755"
+ action :create
+end
+
+cookbook_file "/usr/local/bin/rundeck-deploy/deploy.sh" do
+ source "deploy.sh"
+ owner "svc_deploy_prod"
+ group "nobody"
+ mode "0755"
+ action :create
+end
+

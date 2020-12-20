@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<node   name="user-svc_deploy_prod@repo.tabajara.intranet"
+        description="Servidor de repo de rpm"
+        tags="PROD, Repo"
+        hostname="repo.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+<node   name="user-svc_deploy_prod@facada01.tabajara.intranet"
+        description="Servidor de Prod do api-monitor"
+        tags="PROD, deploy-prod, API-MONITOR"
+        hostname="facada01.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+<node   name="user-svc_deploy_prod@facada02.tabajara.intranet"
+        description="Servidor de Prod do api-monitor"
+        tags="PROD, deploy-prod, API-MONITOR"
+        hostname="facada02.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+<node   name="user-svc_deploy_prod@hfrog01.qa.tabajara.intranet"
+        description="Servidor de QA do api-monitor"
+        tags="PROD, deploy-qa, API-MONITOR-qa"
+        hostname="hfrog01.qa.tabajara.intranet"
+        osName="Linux"
+        username="svc_deploy_prod"
+        ssh-password-storage-path="keys/nodes/user-svc_deploy_prod"
+        ssh-authentication="password"/>
+</project>

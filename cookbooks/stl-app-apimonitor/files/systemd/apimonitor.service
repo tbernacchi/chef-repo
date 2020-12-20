@@ -1,0 +1,14 @@
+[Unit]
+Description = apimonitor 
+After = syslog.target
+
+[Service]
+User = svc-apimonitor
+WorkingDirectory = /app/standalone/apimonitor
+ExecStart = /usr/bin/java -Xmx128m -Xss1m -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8443 /app/standalone/apimonitor/apimonitor.jar --spring.config.location=classpath:file:/app/standalone/apimonitor/conf/application.properties
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,59 @@
+#!/bin/sh
+
+PROC=`ps -ef | grep $1 | grep -v grep | awk '{ print $2 }'`
+QTD="60"
+RESULT="/tmp/result-jstat.log"
+
+## Agente de envio
+ZBXPRX="zabbix-homolog.hml1.tabajara.local
+ZBXSND=$(which zabbix_sender)
+
+SRV=`hostname -f | awk -F'.' '{print $1}'`
+
+# LOCKFILE
+LOCK="/tmp/jstat.lck"
+
+### LOCK
+fn_check_lock()
+        {
+        if [ -e $LOCK ]
+                then
+                        echo "Arquivo de lock $LOCK encontrado, saindo..."
+                        exit 0
+                else
+                        echo $$ > $LOCK
+                        fn_get_stat_calc
+                        rm $LOCK
+        fi
+        }
+
+fn_get_stat_calc()
+        {
+        $(which jstat) -gcutil -t $PROC 1s $QTD > $RESULT
+
+        # Tratando valores
+
+        VR_S0=`cat $RESULT | tail -n $QTD | awk ' { print $2 }' | paste -sd+ | bc -l`
+        MD_VR_S0=`echo "scale=2;$VR_S0 / $QTD" | bc -l`
+
+        VR_S1=`cat $RESULT | tail -n $QTD | awk ' { print $3 }' | paste -sd+ | bc -l`
+        MD_VR_S1=`echo "scale=2;$VR_S1 / $QTD" | bc -l`
+
+        VR_EDEN=`cat $RESULT | tail -n $QTD | awk ' { print $4 }' | paste -sd+ | bc -l`
+        MD_VR_EDEN=`echo "scale=2;$VR_EDEN / $QTD" | bc -l`
+
+        VR_OLD=`cat $RESULT | tail -n $QTD | awk ' { print $5 }' | paste -sd+ | bc -l`
+        MD_VR_OLD=`echo "scale=2;$VR_OLD/ $QTD" | bc -l`
+
+        VR_PERM=`cat $RESULT | tail -n $QTD | awk ' { print $6 }' | paste -sd+ | bc -l`
+        MD_VR_PERM=`echo "scale=2;$VR_PERM / $QTD" | bc -l`
+
+        # Executando o envio para o Zabbix
+        $ZBXSND -z $ZBXPRX -s $SRV -k jstat.MEM_S0 -o $MD_VR_S0
+        $ZBXSND -z $ZBXPRX -s $SRV -k jstat.MEM_S1 -o $MD_VR_S1
+        $ZBXSND -z $ZBXPRX -s $SRV -k jstat.MEM_EDEN -o $MD_VR_EDEN
+        $ZBXSND -z $ZBXPRX -s $SRV -k jstat.MEM_OLD -o $MD_VR_OLD
+        $ZBXSND -z $ZBXPRX -s $SRV -k jstat.MEM_PERM -o $MD_VR_PERM
+        }
+
+fn_check_lock

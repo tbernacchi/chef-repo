@@ -1,0 +1,52 @@
+# framework.properties -
+#
+
+# ----------------------------------------------------------------
+# Rundeck server connection information
+# ----------------------------------------------------------------
+
+framework.server.name = <%= node['fqdn'] %>
+framework.server.hostname = <%= node['fqdn'] %>
+framework.server.port = 4440
+framework.server.url = <%= node['rundeck']['prod']['framework.server.url'] %>
+#framework.server.url = http://<%= node['fqdn'] %>:4440
+
+# ----------------------------------------------------------------
+# Installation locations
+# ----------------------------------------------------------------
+
+rdeck.base=<%= node['rundeck'][node.chef_environment]['rdeck.base'] %>
+
+framework.projects.dir=<%= node['rundeck'][node.chef_environment]['project.dir'] %>
+framework.etc.dir=/etc/rundeck
+framework.var.dir=<%= node['rundeck'][node.chef_environment]['framework.var.dir'] %>
+framework.tmp.dir=<%= node['rundeck'][node.chef_environment]['framework.tmp.dir'] %>
+framework.logs.dir=<%= node['rundeck'][node.chef_environment]['framework.logs.dir'] %>
+framework.libext.dir=<%= node['rundeck'][node.chef_environment]['framework.libext.dir'] %>
+
+# ----------------------------------------------------------------
+# SSH defaults for node executor and file copier
+# ----------------------------------------------------------------
+
+framework.ssh.keypath = /var/lib/rundeck/.ssh/id_rsa
+framework.ssh.user = <%= node['rundeck'][node.chef_environment]['framework.ssh.user'] %>
+#framework.ssh-password-storage-path = /var/lib/rundeck/var/storage/content/keys
+framework.ssh-password-storage-path = <%= node['rundeck'][node.chef_environment]['framework.ssh-password-storage-path'] %>
+
+# ssh connection timeout after a specified number of milliseconds.
+# "0" value means wait forever.
+framework.ssh.timeout = 0
+
+
+# ----------------------------------------------------------------
+# Auto generated server UUID: c349799c-7e83-4abb-b9b8-85a1ddfa7750
+# ----------------------------------------------------------------
+#rundeck.server.uuid = c349799c-7e83-4abb-b9b8-85a1ddfa7750
+rundeck.server.uuid = 614fecde-057e-4966-8790-2255bee89d44
+
+# Config oRundeckpara envio de notification para o Slack 12/03/2019
+framework.plugin.Notification.SlackNotification.webhook_url=https://hooks.slack.com/services/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
+
+#https://github.com/rundeck/rundeck/issues/4677
+rundeck.disable.ref.stats = true
+

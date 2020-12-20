@@ -1,0 +1,15 @@
+[Unit]
+Description = The nginx HTTP and reverse proxy server
+Wants = network-online.target
+After = network-online.target remote-fs.target nss-lookup.target
+
+[Service]
+Type = forking
+ExecStart = /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+Restart = always
+SuccessExitStatus = 143
+
+[Install]
+WantedBy = multi-user.target

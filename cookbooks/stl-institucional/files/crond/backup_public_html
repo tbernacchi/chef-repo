@@ -1,0 +1,4 @@
+SHELL=/bin/bash 
+PATH=/sbin:/bin:/usr/sbin:/usr/bin 
+0 0 * * * root /usr/local/bin/public_html_backup.sh >/dev/null 2>&1 
+0 0 * * * root /usr/local/bin/clean_public_html_backup.sh >/dev/null 2>&1 

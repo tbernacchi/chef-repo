@@ -1,0 +1,61 @@
+#######
+##
+## Script de monitoria de JOBs e arquivo de LOTES do ambiente produtivo da tabajara
+###
+#######
+
+################################################################################################################################################################
+################################################################################################################################################################
+
+#####
+
+# Programacao para adicionar script:
+# Um script de monitora por linha com os parametros na ordem: NOME_JOB INTERVALO_LIMITE HORA_DE_CRIACAO_ARQUIVO
+# Ficando:
+# monit-jobs-tabajara.sh NOME_JOB INTERVALO_LIMITE HORA_DE_CRIACAO_ARQUIVO FILENAME
+# monit-jobs-tabajara.sh GEPDD0001 05 05 GEPD_CANCPED_D
+
+
+# Monitoria do Job GEPDD0001
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0001 30 05 /monitoracao-jobs-nfs/prd/GEPDD0001/ret/ GEPD_CANCPED_D today > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0002
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0002 30 05 /monitoracao-jobs-nfs/prd/GEPDD0002/ret GEPD_PEDIDOCONFIRM_D today > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0004
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0004 86400 22 /monitoracao-jobs-nfs/prd/GEPDD0004/ret/proces CANCBLTO_GEPD.REM yesterday > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0005
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0005 30 04 /monitoracao-jobs-nfs/prd/GEPDD0005/proces CPST_PGTOEFTVC_GEP_D today > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0006
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 04 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 08 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 12 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 16 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 20 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 22 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0006 30 23 /monitoracao-jobs-nfs/prd/GEPDD0006/ret/proces MPOS.REM today > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0007
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0007 30 04 /monitoracao-jobs-nfs/prd/GEPDD0007/proces REM.RET today > /dev/null 2>&1
+
+
+# Monitoria do Job GEPDD0010
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0010 30 10 /monitoracao-jobs-nfs/prd/GEPDD0010/ret/proces MSCP.REM today > /dev/null 2>&1
+
+# Monitoria do Job GEPDD0011
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh GEPDD0011 30 10 /monitoracao-jobs-nfs/prd/GEPDD0011/ret/proces MSCC.REM today > /dev/null 2>&1
+
+# Monitoria do Job HSTRD0001
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh HSTRD0001 30 05 /monitoracao-jobs-nfs/prd/HSTRD0001/proces SUBQ_TRANSDIA_HSTR_D today > /dev/null 2>&1
+
+# Monitoria do Job HSTRD0002
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh HSTRD0002 30 05 /monitoracao-jobs-nfs/prd/HSTRD0002/proces SUBQ_PRCLIQTR_HSTR_D today > /dev/null 2>&1
+
+# Monitoria do Job EXTRD0001
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh EXTRD0001 30 06 /monitoracao-jobs-nfs/prd/EXTRD0001/ret EXTR today > /dev/null 2>&1
+
+# Monitoria do Job EXTRD0002
+*/4 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 60`; /usr/local/bin/monit-jobs/check_monit-jobs-tabajara.sh EXTRD0002 30 06 /monitoracao-jobs-nfs/prd/EXTRD0002/ret EXTR today > /dev/null 2>&1
+

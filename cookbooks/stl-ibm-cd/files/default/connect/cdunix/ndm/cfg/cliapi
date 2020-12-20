@@ -1,0 +1,14 @@
+# Connect:Direct for UNIX client configuration file
+
+cli.parms:\
+ :script.dir=/connect/cdunix/ndm/bin/:
+
+api.parms:\
+ :tcp.hostname=10.150.42.167:\
+ :tcp.port=1363:\
+ :wait.time=50:
+
+# Authenticator
+authentication:\
+ :client.program=/connect/cdunix/ndm/bin/ndmauthc:\
+ :client.keyfile=/connect/cdunix/ndm/security/keys.client:

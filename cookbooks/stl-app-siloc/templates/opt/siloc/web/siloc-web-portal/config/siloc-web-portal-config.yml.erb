@@ -1,0 +1,66 @@
+logging:
+  level.: INFO
+  file: <%= node['siloc']['webportal'][node.chef_environment]['log_path'] %>
+server:
+  port: <%= node['siloc']['webportal'][node.chef_environment]['app_port'] %>
+
+management:
+  security:
+    enabled: false
+  port: <%= node['siloc']['webportal'][node.chef_environment]['app_port'] %>
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active: 5
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/jsp/
+  resources:
+    cache-period: 1
+
+siloc:
+  saida:
+    baixamanual: /opt/silocarquivos/baixapagamento/
+    enviocip:
+      diretorio:
+        entrada: <%= node['siloc']['webportal'][node.chef_environment]['dir_entrada'] %>
+        saida: <%= node['siloc']['webportal'][node.chef_environment]['dir_saida'] %>
+
+  web:
+    tabajara:
+      security:
+        usersearchfilter: <%= node['stl']['ldap']['usersearchfilter']  %>
+        usersearchbase: <%= node['stl']['ldap']['usersearchbase'] %>
+        groupsearchbase: <%= node['siloc']['ldap'][node.chef_environment]['groupsearchbase']  %>
+        url: <%= node['stl']['ldap']['url'] %>
+        port: <%= node['stl']['ldap']['port'] %>
+        dn: <%= node['stl']['ldap']['dn'] %>
+        password: <%= node['stl']['ldap']['password'] %>
+        enabled: <%= node['stl']['ldap']['enabled'] %>

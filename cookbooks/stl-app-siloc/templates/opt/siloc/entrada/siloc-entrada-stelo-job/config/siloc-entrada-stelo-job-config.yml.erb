@@ -1,0 +1,57 @@
+logging:
+  level.: INFO
+  file: <%= node['siloc']['en_tabajara'][node.chef_environment]['log_path'] %>
+
+server:
+  port: <%= node['siloc']['en_tabajara'][node.chef_environment]['app_port'] %>
+
+management:
+  security:
+    enabled: false
+  port: <%= node['siloc']['en_tabajara'][node.chef_environment]['app_port'] %>
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active:  <%= node['siloc']['database'][node.chef_environment]['max_ative'] %>
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+
+siloc:
+  entrada:
+    tabajara:
+      encoding: 'ISO-8859-1'
+      tabajara:
+        diretorio:
+          entrada: <%= node['siloc']['en_tabajara'][node.chef_environment]['ent_dir'] %>
+          parametros: '?move=processed&moveFailed=error&antInclude=*.REM&antFilterCaseSensitive=false&readLock=changed&readLockCheckInterval=5000&readLockTimeout=10m'
+          ordempagamento: '<%= node['siloc']['en_tabajara'][node.chef_environment]['ordem_pgto'] %>'
+          entrada-credito: '<%= node['siloc']['en_tabajara'][node.chef_environment]['ent_cre'] %>'
+          entrada-credito-error: '<%= node['siloc']['en_tabajara'][node.chef_environment]['ent_cre_err'] %>'
+      validacao:
+        validarDataPgto: false
+        validarInfo2: true
+      crontab-credito: '<%= node['siloc']['en_tabajara'][node.chef_environment]['cron_cre'] %>'
+      habilita-crontab-credito: '<%= node['siloc']['en_tabajara'][node.chef_environment]['hab_cron'] %>'

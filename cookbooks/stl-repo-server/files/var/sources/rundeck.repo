@@ -1,0 +1,5 @@
+[rundeck-release-binary]
+name=Rundeck - Release
+baseurl=https://dl.bintray.com/rundeck/rundeck-rpm
+gpgkey=http://rundeck.org/keys/BUILD-GPG-KEY-Rundeck.org.key
+gpgcheck=0

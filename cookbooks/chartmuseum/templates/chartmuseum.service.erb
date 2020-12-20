@@ -1,0 +1,11 @@
+[Unit]
+Description=helm chartmuseum
+After=network.target
+
+[Service]
+Restart=always
+WorkingDirectory=/opt/chartmuseum
+ExecStart=/opt/chartmuseum/startup.sh 
+
+[Install]
+WantedBy=multi-user.target

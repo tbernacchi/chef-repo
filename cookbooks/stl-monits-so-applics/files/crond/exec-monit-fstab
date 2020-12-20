@@ -1,0 +1,6 @@
+#######
+##
+
+# Programacao para adicionar script:
+*/30 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 120`; /usr/local/bin/check-fstab/check-fstab-proc.sh  > /dev/null 2>&1
+

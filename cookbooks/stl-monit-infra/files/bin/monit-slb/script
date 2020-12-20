@@ -1,0 +1,1018 @@
++ SLB=lbbe01.tabajara.local
++ USER=root
++ PASS=Bylu2U8S
++ SLB_API=http://lbbe01.tabajara.local/nitro/v1/stat/lbvserver
++ LOCK=/tmp/slb-vip.lck
++ TEMP_FILE=/tmp/db.temp
++ ZBXPRX=zbxprx01.tabajara.local
+++ which zabbix_sender
++ ZBXSND=/bin/zabbix_sender
++ export https_proxy=http://proxy.tabajara.intranet:3130/
++ https_proxy=http://proxy.tabajara.intranet:3130/
++ export http_proxy=http://proxy.tabajara.intranet:3130/
++ http_proxy=http://proxy.tabajara.intranet:3130/
++ export 'no_proxy=.tabajara.local, 10.0.0.0/8'
++ no_proxy='.tabajara.local, 10.0.0.0/8'
++ fn_check_lock
++ '[' -e /tmp/slb-vip.lck ']'
++ echo 10971
++ fn_check_status_system_by_vip
++ curl -s -u root:Bylu2U8S -i -X GET -H 'Content-Type: application/json' http://lbbe01.tabajara.local/nitro/v1/stat/lbvserver
++ grep errorcode
++ jq .
+++ cat /tmp/db.temp
+++ egrep -w name
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ VIP_NAMES='WLS
+SOA
+OSB
+OUD
+BAT
+WEBGATE
+WEBGATE_HTTPS
+OAM
+CAP2
+Docker
+Docker-HTTPS
+PORTALVENDEDOR
+PORTALVENDEDOR_HTTPS
+ADMIN
+ADMIN_HTTPS
+Docker-Registry
+WLS-02
+OSB-02
+SILOCWEB
+office-PRD
+office-PRD_HTTPS
+NOVO_PORTALVENDEDOR
+NOVO_PORTALVENDEDOR-LOGIN
+REDIS-TKSTORE
+DFIN_FE
+sintegra
+callcenter
+credenciamento-tabajara-intranet
+api-ural.tabajara.intranet
+canalorigem-api.tabajara.intranet
+notificacao-api.tabajara.intranet
+prontaentrega-api.tabajara.intranet
+prontaentrega.tabajara.intranet
+siloc.tabajara.intranet
+gestaomaquina-api
+mini.tabajara.intranet
+api-card.tabajara.intranet
+api-prepago.tabajara.intranet'
+++ echo WLS SOA OSB OUD BAT WEBGATE WEBGATE_HTTPS OAM CAP2 Docker Docker-HTTPS PORTALVENDEDOR PORTALVENDEDOR_HTTPS ADMIN ADMIN_HTTPS Docker-Registry WLS-02 OSB-02 SILOCWEB office-PRD office-PRD_HTTPS NOVO_PORTALVENDEDOR NOVO_PORTALVENDEDOR-LOGIN REDIS-TKSTORE DFIN_FE sintegra callcenter credenciamento-tabajara-intranet api-ural.tabajara.intranet canalorigem-api.tabajara.intranet notificacao-api.tabajara.intranet prontaentrega-api.tabajara.intranet prontaentrega.tabajara.intranet siloc.tabajara.intranet gestaomaquina-api mini.tabajara.intranet api-card.tabajara.intranet api-prepago.tabajara.intranet
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep WLS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep WLS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep WLS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep SOA -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SOA -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep SOA -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SOA -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep SOA -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SOA -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep OSB -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep OSB -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep OSB -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep OUD -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OUD -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep OUD -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OUD -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep OUD -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OUD -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep BAT -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=50
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s BAT -k SLB_HEALTH -o 50
+++ cat /tmp/db.temp
+++ grep BAT -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s BAT -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep BAT -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s BAT -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep WEBGATE -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep WEBGATE -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep WEBGATE -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep WEBGATE_HTTPS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE_HTTPS -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep WEBGATE_HTTPS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE_HTTPS -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep WEBGATE_HTTPS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WEBGATE_HTTPS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep OAM -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OAM -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep OAM -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OAM -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep OAM -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OAM -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep CAP2 -A5
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s CAP2 -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep CAP2 -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s CAP2 -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep CAP2 -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s CAP2 -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep Docker -A5
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep Docker -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep Docker -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep Docker-HTTPS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-HTTPS -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep Docker-HTTPS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=OUT
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-HTTPS -k SLB_STATUS -o OUT
+++ cat /tmp/db.temp
+++ grep Docker-HTTPS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-HTTPS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR_HTTPS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR_HTTPS -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR_HTTPS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR_HTTPS -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep PORTALVENDEDOR_HTTPS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s PORTALVENDEDOR_HTTPS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep ADMIN -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep ADMIN -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep ADMIN -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep ADMIN_HTTPS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN_HTTPS -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep ADMIN_HTTPS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN_HTTPS -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep ADMIN_HTTPS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s ADMIN_HTTPS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep Docker-Registry -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-Registry -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep Docker-Registry -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-Registry -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep Docker-Registry -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s Docker-Registry -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep WLS-02 -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS-02 -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep WLS-02 -A9
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS-02 -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep WLS-02 -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s WLS-02 -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep OSB-02 -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB-02 -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep OSB-02 -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB-02 -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep OSB-02 -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s OSB-02 -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep SILOCWEB -A5
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SILOCWEB -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep SILOCWEB -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SILOCWEB -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep SILOCWEB -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s SILOCWEB -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep office-PRD -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep office-PRD -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep office-PRD -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep office-PRD_HTTPS -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD_HTTPS -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep office-PRD_HTTPS -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD_HTTPS -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep office-PRD_HTTPS -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s office-PRD_HTTPS -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR-LOGIN -A5
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR-LOGIN -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR-LOGIN -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR-LOGIN -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep NOVO_PORTALVENDEDOR-LOGIN -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s NOVO_PORTALVENDEDOR-LOGIN -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep REDIS-TKSTORE -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s REDIS-TKSTORE -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep REDIS-TKSTORE -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s REDIS-TKSTORE -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep REDIS-TKSTORE -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s REDIS-TKSTORE -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep DFIN_FE -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s DFIN_FE -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep DFIN_FE -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s DFIN_FE -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep DFIN_FE -A18
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s DFIN_FE -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep sintegra -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s sintegra -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep sintegra -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s sintegra -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep sintegra -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s sintegra -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep callcenter -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s callcenter -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep callcenter -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s callcenter -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep callcenter -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s callcenter -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep credenciamento-tabajara-intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s credenciamento-tabajara-intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep credenciamento-tabajara-intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s credenciamento-tabajara-intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep credenciamento-tabajara-intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s credenciamento-tabajara-intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep api-ural.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-ural.tabajara.intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep api-ural.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-ural.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep api-ural.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-ural.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep canalorigem-api.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s canalorigem-api.tabajara.intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep canalorigem-api.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s canalorigem-api.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep canalorigem-api.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s canalorigem-api.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep notificacao-api.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s notificacao-api.tabajara.intranet -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep notificacao-api.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s notificacao-api.tabajara.intranet -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep notificacao-api.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s notificacao-api.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep prontaentrega-api.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega-api.tabajara.intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep prontaentrega-api.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega-api.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep prontaentrega-api.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega-api.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep prontaentrega.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=50
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega.tabajara.intranet -k SLB_HEALTH -o 50
+++ cat /tmp/db.temp
+++ grep prontaentrega.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep prontaentrega.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s prontaentrega.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep siloc.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s siloc.tabajara.intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep siloc.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s siloc.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep siloc.tabajara.intranet -A18
+++ tail -n1
+++ sed -e 's/"//g' -e s/,//g
+++ awk '{ print $2 }'
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s siloc.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep gestaomaquina-api -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=50
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s gestaomaquina-api -k SLB_HEALTH -o 50
+++ cat /tmp/db.temp
+++ grep gestaomaquina-api -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s gestaomaquina-api -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep gestaomaquina-api -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s gestaomaquina-api -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep mini.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=100
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s mini.tabajara.intranet -k SLB_HEALTH -o 100
+++ cat /tmp/db.temp
+++ grep mini.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=UP
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s mini.tabajara.intranet -k SLB_STATUS -o UP
+++ cat /tmp/db.temp
+++ grep mini.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s mini.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep api-card.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-card.tabajara.intranet -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep api-card.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-card.tabajara.intranet -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep api-card.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-card.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ for vip_name in '`echo $VIP_NAMES`'
+++ cat /tmp/db.temp
+++ grep api-prepago.tabajara.intranet -A5
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_HEALTH=0
++ fn_send_zabbix_slb_health
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-prepago.tabajara.intranet -k SLB_HEALTH -o 0
+++ cat /tmp/db.temp
+++ grep api-prepago.tabajara.intranet -A9
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_STATUS=DOWN
++ fn_send_zabbix_slb_status
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-prepago.tabajara.intranet -k SLB_STATUS -o DOWN
+++ cat /tmp/db.temp
+++ grep api-prepago.tabajara.intranet -A18
+++ tail -n1
+++ awk '{ print $2 }'
+++ sed -e 's/"//g' -e s/,//g
++ SLB_RATE_REQS_BYTES=0
++ fn_send_zabbix_slb_rate_reqs_bytes
++ /bin/zabbix_sender -z zbxprx01.tabajara.local -s api-prepago.tabajara.intranet -k SLB_RATE_REQS_BYTES -o 0
++ fn_gc
++ rm /tmp/slb-vip.lck
++ rm /tmp/db.temp

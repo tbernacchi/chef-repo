@@ -1,0 +1,8 @@
+#######
+##
+
+#####
+
+# Programacao para adicionar script:
+*/25 * * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 300`; /usr/local/bin/monit-redis/redis-requests.sh > /dev/null 2>&1
+

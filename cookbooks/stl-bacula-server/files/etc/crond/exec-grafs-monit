@@ -1,0 +1,5 @@
+#######
+##
+
+# Programacao para adicionar script:
+*/30 * * * *  root /usr/local/bin/grafs/grafs-trigger-backup-clients.sh > /dev/null 2>&1

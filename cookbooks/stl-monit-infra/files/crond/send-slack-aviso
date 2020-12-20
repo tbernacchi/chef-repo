@@ -1,0 +1,6 @@
+#####
+
+# Programacao para adicionar script:
+
+# *.tabajara.com.br
+#00 8,10,12,14,16,18 * * *  root /bin/sleep `/usr/bin/expr $RANDOM \% 3600`; /usr/local/bin/send-slack/send-slack-aviso.sh > /dev/null 2>&1

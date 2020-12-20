@@ -1,0 +1,12 @@
+$PreserveFQDN on
+$ModLoad imfile
+
+$InputFileName /var/log/bash-history.log
+$InputFileTag bash
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'bash' then @<%= node['stl-security']['rsyslogserver'] %>:514
+

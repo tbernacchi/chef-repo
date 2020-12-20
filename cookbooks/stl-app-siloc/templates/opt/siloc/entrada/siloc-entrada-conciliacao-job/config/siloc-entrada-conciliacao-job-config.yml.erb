@@ -1,0 +1,52 @@
+logging:
+  level:
+    siloc: INFO
+    file: <%= node['siloc']['conciliacao'][node.chef_environment]['log_path'] %>
+
+server:
+  port: <%= node['siloc']['conciliacao'][node.chef_environment]['app_port'] %>
+
+management:
+  security:
+    enabled: false
+  port: <%= node['siloc']['conciliacao'][node.chef_environment]['app_port'] %>
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active: 5
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+
+siloc:
+  entrada:
+    conciliacao:
+      encoding: 'ISO-8859-1'
+      recorrente: false
+      crontab: 0 0 12 1/1 * ?
+      tabajara:
+        diretorio:
+          entrada: <%= node['siloc']['conciliacao'][node.chef_environment]['dir_entrada'] %>
+          parametros: '?move=processed&moveFailed=error&antInclude=*.csv&antFilterCaseSensitive=false&readLock=changed&readLockCheckInterval=5000&readLockTimeout=10m'

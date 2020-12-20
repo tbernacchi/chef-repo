@@ -1,0 +1,21 @@
+default['docker']['registry'] = 'zocker01.tabajara.intranet:5000'
+default['rancher']['http_proxy'] = 'http://proxy.tabajara.intranet:3130/'
+
+default['kubernetes']['kubelet']['version'] = '1.14.0-0'
+default['kubernetes']['kubectl']['version'] = '1.14.0-0'
+default['kubernetes']['kubeadm']['version'] = '1.14.0-0'
+
+default['kubernetes']['master0']['ip_addr'] = '10.150.174.177'
+default['kubernetes']['master1']['ip_addr'] = '10.150.174.178'
+default['kubernetes']['master2']['ip_addr'] = '10.150.174.179'
+default['kubernetes']['pod_subnet'] = '10.32.0.0/12'
+default['kubernetes']['caFile'] = '/etc/kubernetes/pki/etcd/ca.pem'
+default['kubernetes']['certFile'] = '/etc/kubernetes/pki/etcd/client.pem'
+default['kubernetes']['keyFile'] = '/etc/kubernetes/pki/etcd/client-key.pem'
+
+default['kubernetes']['keepalived']['interface'] = 'ens160'
+default['kubernetes']['keepalived']['virtal_ip'] = '10.150.174.186'
+default['kubernetes']['keepalived']['master_prio'] = '101'
+default['kubernetes']['keepalived']['bakup_prio'] = '100'
+default['kubernetes']['keepalived']['pass'] = '$t&l0'
+default['kubernetes']['keepalived']['script_path'] = '/etc/keepalived/check_apiserver.sh'

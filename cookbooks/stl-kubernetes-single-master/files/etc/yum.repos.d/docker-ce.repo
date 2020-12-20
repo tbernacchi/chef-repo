@@ -1,0 +1,5 @@
+[docker-ce]
+name=Docker Community Edition
+baseurl=http://repo.tabajara.intranet/repos/docker-ce-stable/
+gpgcheck=0
+enabled=1

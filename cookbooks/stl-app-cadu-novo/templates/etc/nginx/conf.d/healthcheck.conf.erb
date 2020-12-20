@@ -1,0 +1,128 @@
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %> {
+	server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['aceite.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %> { 
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['aceite.pessoa.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['cnae.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['conta.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['email.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %> {
+	server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['endereco.server.port'] %>;
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['pessoa.port'] %>; 
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['pessoa.onboard.server.port'] %>; 
+        }	
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['telefone.server.port'] %>; 
+        }
+upstream hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %> {
+        server 0.0.0.0:<%= node['novo-cadu']['app'][node.chef_environment]['ec.server.port'] %>; 
+        }
+
+server {
+        listen 80 default_server;
+        access_log  /var/log/nginx/healthcheck_valid_access.log  timed;
+        server_name _;
+
+	location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %>/actuator/health { 
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header              X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.aceite.pessoa'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header              X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+	location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.cnae'] %>/actuator/health;
+		
+                proxy_set_header        Accept-Encoding   "";
+                add_header              X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.conta'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header              X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.email'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %>/actuator/health {
+	proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.endereco'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+        location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.pessoa.onboard'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }	
+	location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.telefone'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+	location /<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %>/actuator/health {
+                proxy_pass  http://hc_<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %>/<%= node['novo-cadu']['nginx'][node.chef_environment]['upstream.ec'] %>/actuator/health;
+                proxy_set_header        Accept-Encoding   "";
+                add_header X-Backend-Server $hostname;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+      }
+}

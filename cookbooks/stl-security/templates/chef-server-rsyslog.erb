@@ -1,0 +1,63 @@
+<% if node['fqdn'] == 'vbnbus001.prd1.tabajara.local' -%>
+## UDP @
+## TCP @@
+$PreserveFQDN on
+$ModLoad imfile
+
+# access.log1
+$InputFileName <%= node['stl-security']['vbnbus1'][node.chef_environment]['access_log1'] %>
+$InputFileTag tag-access-vbnbus1
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'tag-access-vbnbus1' then @zarcao01.tabajara.intranet:3514
+
+# access.log2
+$InputFileName <%= node['stl-security']['vbnbus1'][node.chef_environment]['access_log2'] %>
+$InputFileTag tag-access-vbnbus2
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'tag-access-vbnbus2' then @zarcao01.tabajara.intranet:3514
+
+# access.log3
+$InputFileName <%= node['stl-security']['vbnbus1'][node.chef_environment]['access_log3'] %>
+$InputFileTag tag-access-vbnbus3
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'tag-access-vbnbus3' then @zarcao01.tabajara.intranet:3514
+<% end -%> 
+
+<% if node['fqdn'] == 'vbnbus002.prd1.tabajara.local' -%>
+## UDP @
+## TCP @@
+$PreserveFQDN on
+$ModLoad imfile
+
+# access.log1
+$InputFileName <%= node['stl-security']['vbnbus2'][node.chef_environment]['access_log1'] %>
+$InputFileTag tag-access-vbnbus1
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'tag-access-vbnbus1' then @zarcao01.tabajara.intranet:3514
+
+# access.log2
+$InputFileName <%= node['stl-security']['vbnbus2'][node.chef_environment]['access_log2'] %>
+$InputFileTag tag-access-vbnbus2
+$InputFileStateFile stat-file1
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputRunFileMonitor
+
+if $syslogtag contains 'tag-access-vbnbus2' then @zarcao01.tabajara.intranet:3514
+<% end -%> 

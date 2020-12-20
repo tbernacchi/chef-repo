@@ -1,0 +1,37 @@
+LogFile=<%= node['zbxserver']['conf']['logfile']['path'] %>
+
+LogFileSize=<%= node['zbxserver']['conf']['logfile']['size'] %>
+
+PidFile=<%= node['zbxserver']['conf']['pid'] %>
+
+SocketDir=/var/run/zabbix
+
+DBHost=<%= node['zbxserver']['conf']['db']['host'] %>
+DBName=<%= node['zbxserver']['conf']['db']['name'] %>
+DBUser=<%= node['zbxserver']['conf']['db']['user'] %>
+DBPassword=<%= node['zbxserver']['conf']['db']['pass'] %>
+
+SNMPTrapperFile=/var/log/snmptrap/snmptrap.log
+
+Timeout=<%= node['zbxserver']['conf']['timeout'] %>
+
+AlertScriptsPath=/usr/lib/zabbix/alertscripts
+
+ExternalScripts=/usr/lib/zabbix/externalscripts
+
+LogSlowQueries=<%= node['zbxserver']['conf']['logslowqueries'] %>
+
+CacheSize=<%= node['zbxserver']['conf']['cache']['size'] %>
+
+HistoryIndexCacheSize=<%= node['zbxserver']['conf']['cache']['history'] %>
+
+ValueCacheSize=<%= node['zbxserver']['conf']['cache']['value'] %>
+
+StartPingers=<%= node['zbxserver']['conf']['start']['pingers'] %>
+
+StartDiscoverers=<%= node['zbxserver']['conf']['start']['discoveres'] %>
+
+StartPollersUnreachable=<%= node['zbxserver']['conf']['start']['pollersunreac'] %>
+
+#DebugLevel=<%= node['zbxserver']['conf']['debug']['level'] %>
+

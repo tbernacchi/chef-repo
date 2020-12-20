@@ -1,0 +1,1 @@
+Time de DEV Tabajara que atende os sistemas tabajara. 1 - Solicitacoes de tarefas do dia-a-d: Usem o JiraSD em: https://sd-tabajara.atlassian.net/servicedesk/customer/portal/1 e para Atividades de projetos. Usem o Jira de Atividades https://jiratabajara.atlassian.net/secure/RapidBoard.jspa?rapidView=64&projectKey=INFRA&selectedIssue=INFRA-862

@@ -1,0 +1,47 @@
+[base]
+name=CentOS Base
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/base/
+gpgcheck=0
+enabled=1
+
+[centosplus]
+name=CentOS CentOSPlus
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/centosplus/
+gpgcheck=0
+enabled=1
+
+[extras]
+name=CentOS Extras
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/extras/
+gpgcheck=0
+enabled=1
+
+[updates]
+name=CentOS Updates
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/updates/
+gpgcheck=0
+enabled=1
+
+[third-party]
+name=CentOS Third-party
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/third-party/
+gpgcheck=0
+enabled=1
+
+[chef]
+name=Chef Client
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/pacotes/base/chef/
+gpgcheck=0
+enabled=1
+
+[zabbix]
+name=Zabbix 
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/pacotes/base/zabbix/
+gpgcheck=0
+enabled=1
+
+[epel]
+name=Epel
+baseurl=http://<%= node['bootstrap']['baseurl'] %>/repos/epel/
+gpgcheck=0
+enabled=1

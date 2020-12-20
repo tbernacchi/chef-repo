@@ -1,0 +1,102 @@
+logging:
+  level.: INFO
+  file: <%= node['siloc']['proc_xml'][node.chef_environment]['log_path'] %>
+
+server:
+  port: <%= node['siloc']['proc_xml'][node.chef_environment]['app_port'] %>
+
+management:
+  security:
+    enabled: false
+  port: <%= node['siloc']['proc_xml'][node.chef_environment]['app_port'] %>
+  health:
+    diskspace:
+      enabled: false
+
+spring:
+  main:
+    banner-mode: log
+  datasource:
+    url: jdbc:oracle:thin:@//<%= node['siloc']['database'][node.chef_environment]['host'] %>:<%= node['siloc']['database'][node.chef_environment]['port'] %>/<%= node['siloc']['database'][node.chef_environment]['db_name'] %>
+    username: <%= node['siloc']['database'][node.chef_environment]['user'] %>
+    password: <%= node['siloc']['database'][node.chef_environment]['pass'] %>
+    driver-class-name: oracle.jdbc.OracleDriver
+    max-active: <%= node['siloc']['database'][node.chef_environment]['max_ative'] %>
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+    repositories:
+      enabled: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+
+cip:
+  ispb:
+    tabajara: 14625224
+    xml:
+      header: <?xml version="1.0" encoding="UTF-16BE"?>
+      encoding: UTF-16BE
+
+siloc:
+  processamento:
+    geracaoxml:
+      recorrente: false
+      crontab: 0 0/1 * 1/1 * ?
+      recorrente-lotecredito: true
+      crontab-lotecredito: 10 0/7 7-23 1/1 * ?
+      recorrente-lotedebito: true
+      crontab-lotedebito: 00 0/2 2-23 1/1 * ?
+      recorrente-geracao: false
+      crontab-geracao: 0 0/1 * 1/1 * ?
+      tabajara:
+        seguranca:
+          chaveprivada:
+            jks:
+              arquivo: <%= node['siloc']['proc_xml'][node.chef_environment]['tabajara_privateKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: <%= node['siloc']['proc_xml'][node.chef_environment]['tabajara_crt_alias'] %>
+              senha: tabajara123
+              politicaCertificado: Serasa
+          chavepublica:
+            jks:
+              arquivo: <%= node['siloc']['proc_xml'][node.chef_environment]['tabajara_publicKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: <%= node['siloc']['proc_xml'][node.chef_environment]['tabajara_crt_alias'] %>
+              senha: tabajara123
+              politicaCertificado: Serasa
+      cip:
+        seguranca:
+          3des:
+            padding: false
+            usarIVChave: true
+          chavepublica:
+            jks:
+              arquivo: <%= node['siloc']['proc_xml'][node.chef_environment]['cip_publicKey'] %>
+              senha: tabajara123
+            certificado:
+              alias: <%= node['siloc']['proc_xml'][node.chef_environment]['cip_crt_alias'] %>
+              senha: tabajara123
+              politicaCertificado: Serasa
+        binario:
+          gerar: true
+          diretorio: <%= node['siloc']['proc_xml'][node.chef_environment]['cip_bin_dir'] %>
+          extensao:
+        xml:
+          gerar: true
+          diretorio: <%= node['siloc']['proc_xml'][node.chef_environment]['cip_xml_dir'] %>
+          extensao: xml
+        logHexa:
+          gerar: true
+          diretorio: <%= node['siloc']['proc_xml'][node.chef_environment]['cip_hexa_dir'] %>
+          extensao: log

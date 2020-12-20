@@ -1,0 +1,4 @@
+cd /etc/etcd/
+openssl genrsa -out member-<%= node['etcd'][node.chef_environment]['srv02_host'] %>-key.pem 2048
+openssl req -new -key member-<%= node['etcd'][node.chef_environment]['srv02_host'] %>-key.pem -out member-<%= node['etcd'][node.chef_environment]['srv02_host'] %>.csr -subj "/CN=<%= node['etcd'][node.chef_environment]['srv02_host'] %>" -config /etc/etcd/openssl02.conf
+openssl x509 -req -in member-<%= node['etcd'][node.chef_environment]['srv02_host'] %>.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out member-<%= node['etcd'][node.chef_environment]['srv02_host'] %>.pem -days 3650 -extensions ssl_client -extfile /etc/etcd/openssl02.conf

@@ -1,0 +1,15 @@
+[Unit]
+Description=tabajara SMS Mail Dispatcher Service
+After=network.target
+
+[Service]
+Environment="NODE_ENV=config"
+Environment="http_proxy=http://proxy.tabajara.intranet:3130"
+Type=simple
+User=svc-notify
+WorkingDirectory=/opt/app/lib/tests
+ExecStart=/opt/app/startup.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
